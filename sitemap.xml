@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://programtraveler.github.io/contact/index.html</loc>
+    
+    <lastmod>2020-10-18T11:10:02.216Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://programtraveler.github.io/about/index.html</loc>
+    
+    <lastmod>2020-10-18T11:05:26.977Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://programtraveler.github.io/2019/08/27/blog-open-source/</loc>
     
     <lastmod>2020-07-01T09:09:44.000Z</lastmod>
@@ -23,20 +37,6 @@
   </url>
   
   <url>
-    <loc>https://programtraveler.github.io/categories/index.html</loc>
-    
-    <lastmod>2020-07-01T09:09:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://programtraveler.github.io/about/index.html</loc>
-    
-    <lastmod>2020-07-01T09:09:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://programtraveler.github.io/archives/index.html</loc>
     
     <lastmod>2020-07-01T09:09:44.000Z</lastmod>
@@ -44,7 +44,7 @@
   </url>
   
   <url>
-    <loc>https://programtraveler.github.io/contact/index.html</loc>
+    <loc>https://programtraveler.github.io/categories/index.html</loc>
     
     <lastmod>2020-07-01T09:09:44.000Z</lastmod>
     
@@ -58,14 +58,14 @@
   </url>
   
   <url>
-    <loc>https://programtraveler.github.io/galleries/index.html</loc>
+    <loc>https://programtraveler.github.io/tags/index.html</loc>
     
     <lastmod>2020-07-01T09:09:44.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://programtraveler.github.io/tags/index.html</loc>
+    <loc>https://programtraveler.github.io/galleries/index.html</loc>
     
     <lastmod>2020-07-01T09:09:44.000Z</lastmod>
     
