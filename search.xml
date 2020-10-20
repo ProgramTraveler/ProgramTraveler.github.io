@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>重排链表</title>
+      <link href="/2020/10/20/chong-pai-lian-biao/"/>
+      <url>/2020/10/20/chong-pai-lian-biao/</url>
+      
+        <content type="html"><![CDATA[<h1 id="题目介绍"><a href="#题目介绍" class="headerlink" title="题目介绍"></a>题目介绍</h1><p>传送门：<a href="https://leetcode-cn.com/problems/reorder-list/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/reorder-list/</a></p><hr><h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><pre><code>class Solution {public:    //利用快慢指针来查找链表的中间节点    ListNode* MID(ListNode* head){        //快指针比慢指针永远快一步        ListNode* fast=head;        ListNode* slow=head;        //当快指针走到末尾时，慢指针则刚好走了一半        while(fast!=nullptr &amp;&amp; fast-&gt;next!=nullptr){            fast=fast-&gt;next-&gt;next;            slow=slow-&gt;next;        }        //返回慢指针        return slow;    }    //对链表进行反转    ListNode* REVERSE(ListNode* head){        ListNode *pre; //记录前一个节点        ListNode *cur; //记录当前节点        ListNode *next; //记录下一个节点        cur=head;        pre=NULL;        while(cur!=NULL)        {            next=cur-&gt;next; //保存cur的下一个节点            cur-&gt;next=pre; //令当前节点指向前一个节点            pre=cur; //更新pre的值            cur=next; //当前节点向后移一位        }        return pre; //pre此时已经到最后一个节点，也就是反转后的头节点    }    void reorderList(ListNode* head) {        if(!head) return;        ListNode* mid=MID(head); //获取中间节点        //cout&lt;&lt;mid-&gt;val;        //通过中间节点，分为右链表和左链表        ListNode* left=head;         ListNode* right=mid-&gt;next;        mid-&gt;next=nullptr; //断开链表，分为左右链表        //对右边链表进行反转        right=REVERSE(right);        //cout&lt;&lt;right-&gt;next-&gt;val;        //将左链表和反转后的右链表合并        ListNode* L_temp; //保存left当前节点的下一个节点        ListNode* R_temp; //保存right当前节点的下一个节点        //将两个链表进行合并        while(left-&gt;next!=nullptr &amp;&amp; right!=nullptr){            L_temp=left-&gt;next;//保存下一个节点            R_temp=right-&gt;next;//保存下一个节点            //连个链表进行相连            left-&gt;next=right;             right-&gt;next=L_temp;            //更新left和right节点的位置            left=L_temp;            right=R_temp;        }    }};</code></pre><hr><h1 id="体会"><a href="#体会" class="headerlink" title="体会"></a>体会</h1><p>在做这个题的时候，一开始想使用双指针的思想，但很快就否定了，因为链表不能从后向前，这个就直接out。这个不行就找其他方法，看了几遍题，就想先去找到这个链表的中点，然后将右边的链表倒置，再重新连接起来，要是不会找链表的中点和对链表进行转置，可以去看这两个题链表的中间节点：<a href="https://leetcode-cn.com/problems/middle-of-the-linked-list/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/middle-of-the-linked-list/</a>和反转链表<a href="https://leetcode-cn.com/problems/reverse-linked-list/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/reverse-linked-list/</a>。</p><hr><h1 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h1><p>在把代码写出来后，在提交的时候发现竟然会出现执行错误，但却不出现报错，这就难受了，这样的执行错误连改bug的机会都不给，这样多半是和逻辑没什么关系，看看是不是出现溢出或者什么错误操作，然后我就发现了关键的代码 <code>mid-&gt;next=nullptr;</code> 。要是不添加这个代码的话，就会导致左右链表没有断开，然后出现环的情况。</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 题解 指针 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> Github </tag>
+            
+            <tag> 博客 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>博客开源</title>
       <link href="/2019/08/27/blog-open-source/"/>
       <url>/2019/08/27/blog-open-source/</url>
