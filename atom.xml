@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://programtraveler.github.io/"/>
-  <updated>2020-10-29T13:49:39.004Z</updated>
+  <updated>2020-10-29T13:55:17.180Z</updated>
   <id>https://programtraveler.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://programtraveler.github.io/2020/10/29/qiu-gen-dao-xie-zi-jie-dian/"/>
     <id>https://programtraveler.github.io/2020/10/29/qiu-gen-dao-xie-zi-jie-dian/</id>
     <published>2020-10-28T16:00:00.000Z</published>
-    <updated>2020-10-29T13:49:39.004Z</updated>
+    <updated>2020-10-29T13:55:17.180Z</updated>
     
     <summary type="html">
     
@@ -37,6 +37,12 @@
     
       <category term="题解 深度优先遍历" scheme="https://programtraveler.github.io/categories/%E9%A2%98%E8%A7%A3-%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/"/>
     
+    
+      <category term="Hexo" scheme="https://programtraveler.github.io/tags/Hexo/"/>
+    
+      <category term="Github" scheme="https://programtraveler.github.io/tags/Github/"/>
+    
+      <category term="博客" scheme="https://programtraveler.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   
@@ -90,36 +96,6 @@
     </summary>
     
       <category term="题解 链表" scheme="https://programtraveler.github.io/categories/%E9%A2%98%E8%A7%A3-%E9%93%BE%E8%A1%A8/"/>
-    
-    
-      <category term="Hexo" scheme="https://programtraveler.github.io/tags/Hexo/"/>
-    
-      <category term="Github" scheme="https://programtraveler.github.io/tags/Github/"/>
-    
-      <category term="博客" scheme="https://programtraveler.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>博客</title>
-    <link href="https://programtraveler.github.io/2020/07/27/blog-open-source/"/>
-    <id>https://programtraveler.github.io/2020/07/27/blog-open-source/</id>
-    <published>2020-07-26T16:00:00.000Z</published>
-    <updated>2020-10-29T13:31:03.161Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;效果演示&quot;&gt;&lt;a href=&quot;#效果演示&quot; class=&quot;headerlink&quot; title=&quot;效果演示&quot;&gt;&lt;/a&gt;效果演示&lt;/h1&gt;&lt;h1 id=&quot;简短介绍&quot;&gt;&lt;a href=&quot;#简短介绍&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="软件安装与配置" scheme="https://programtraveler.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/"/>
     
     
       <category term="Hexo" scheme="https://programtraveler.github.io/tags/Hexo/"/>
