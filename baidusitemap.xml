@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://programtraveler.github.io/2020/10/29/qiu-gen-dao-xie-zi-jie-dian/</loc>
+    <lastmod>2020-10-29</lastmod>
+  </url>  <url>
+    <loc>https://programtraveler.github.io/2020/07/27/blog-open-source/</loc>
+    <lastmod>2020-10-29</lastmod>
+  </url>  <url>
     <loc>https://programtraveler.github.io/2020/10/21/chang-an-shu-ru/</loc>
     <lastmod>2020-10-21</lastmod>
   </url>  <url>
     <loc>https://programtraveler.github.io/2020/10/20/chong-pai-lian-biao/</loc>
-    <lastmod>2020-10-20</lastmod>
-  </url>  <url>
-    <loc>https://programtraveler.github.io/2019/08/27/blog-open-source/</loc>
     <lastmod>2020-10-20</lastmod>
   </url>
 </urlset>
