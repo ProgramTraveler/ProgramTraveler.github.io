@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://programtraveler.github.io/"/>
-  <updated>2020-10-30T03:20:15.608Z</updated>
+  <updated>2020-10-30T05:54:57.547Z</updated>
   <id>https://programtraveler.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>博客主页</title>
     <link href="https://programtraveler.github.io/2020/10/30/zhu-ye/"/>
     <id>https://programtraveler.github.io/2020/10/30/zhu-ye/</id>
-    <published>2020-10-30T03:15:45.002Z</published>
-    <updated>2020-10-30T03:20:15.608Z</updated>
+    <published>2020-10-29T16:00:00.000Z</published>
+    <updated>2020-10-30T05:54:57.547Z</updated>
     
     <summary type="html">
     
@@ -29,14 +29,20 @@
       
         
         
-          &lt;hr&gt;
-&lt;p&gt;title: 博客主页&lt;br&gt;date: 2020-10-30&lt;br&gt;author: 王久铭&lt;/p&gt;
-&lt;p&gt;coverImg: /medias/banner/1.jpg&lt;br&gt;top: true&lt;br&gt;cover: true&lt;br&gt;toc:
+          &lt;h1 id=&quot;详情&quot;&gt;&lt;a href=&quot;#详情&quot; class=&quot;headerlink&quot;
         
       
     
     </summary>
     
+      <category term="博客" scheme="https://programtraveler.github.io/categories/%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+      <category term="Hexo" scheme="https://programtraveler.github.io/tags/Hexo/"/>
+    
+      <category term="Github" scheme="https://programtraveler.github.io/tags/Github/"/>
+    
+      <category term="博客" scheme="https://programtraveler.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   

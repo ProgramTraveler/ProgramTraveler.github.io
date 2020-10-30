@@ -4,13 +4,29 @@
   
     
     <entry>
-      <title></title>
+      <title>博客主页</title>
       <link href="/2020/10/30/zhu-ye/"/>
       <url>/2020/10/30/zhu-ye/</url>
       
-        <content type="html"><![CDATA[<hr><p>title: 博客主页<br>date: 2020-10-30<br>author: 王久铭</p><p>coverImg: /medias/banner/1.jpg<br>top: true<br>cover: true<br>toc: true<br>mathjax: false<br>summary:<br>    记录自己在LeetCode做题过程中的心得和感受，以及对LeetCode解题的具体题解和思路，同时也把自己学习知识的总结和学习过程记录下来</p><p>tags:<br>    - Hexo<br>    - Github<br>    - 博客</p><p>categories:<br>    - 博客 </p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+        <content type="html"><![CDATA[<h1 id="详情"><a href="#详情" class="headerlink" title="详情"></a>详情</h1><pre><code>记录自己在LeetCode做题过程中的心得和感受，以及对LeetCode解题的具体题解和思路，同时也把自己学习知识的总结和学习过程记录下来。</code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
       
       
+      <categories>
+          
+          <category> 博客 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> Github </tag>
+            
+            <tag> 博客 </tag>
+            
+        </tags>
       
     </entry>
     
