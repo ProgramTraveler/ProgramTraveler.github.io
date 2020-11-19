@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>二维数组的查找</title>
+      <link href="/2020/11/19/er-wei-shu-zu-de-cha-zhao/"/>
+      <url>/2020/11/19/er-wei-shu-zu-de-cha-zhao/</url>
+      
+        <content type="html"><![CDATA[<h1 id="题目介绍"><a href="#题目介绍" class="headerlink" title="题目介绍"></a>题目介绍</h1><p>在一个 n * m 的二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个高效的函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p><p>现有矩阵 matrix 如下：</p><p>[<br>  [1,   4,  7, 11, 15],<br>  [2,   5,  8, 12, 19],<br>  [3,   6,  9, 16, 22],<br>  [10, 13, 14, 17, 24],<br>  [18, 21, 23, 26, 30]<br>]<br>给定 target = 5，返回 true。</p><p>给定 target = 20，返回 false。</p><p><a href="https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof/" target="_blank" rel="noopener">leetcode传送门</a></p><h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><ul><li>在做这个题的时候，如果你要暴力的话，直接对数组进行搜索，那样的你就没有利用完题目所给你的条件，这显然是不及格的做法</li><li>所以我们需要在对题目所给条件完全利用的情况下，去尽可能的减少时间和空间的使用</li><li>然后我就想使用一个深度优先搜索来去做这个题</li></ul><h2 id="My-Code"><a href="#My-Code" class="headerlink" title="My Code"></a>My Code</h2><pre><code> bool find(int row,int cur,int target,vector&lt;vector&lt;int&gt;&gt;&amp; matrix){        //如果查找的数超过了边界,直接返回false        if(row==matrix.size() || cur==matrix[row].size()) return false;        //如果能够找到当前的数，那么返回true        if(matrix[row][cur]==target) return true;        //如果当前的数比目标值大，那么返回false，结束该点的向下查找        if(matrix[row][cur]&gt;target) return false;        //如果当前的数比目标值小，那么就向左和向下查        if(matrix[row][cur]&lt;target){            //cout&lt;&lt;row&lt;&lt;endl;            //这一步我觉得很不错            return (find(row+1,cur,target,matrix) || find(row,cur+1,target,matrix));        }        //cout&lt;&lt;row&lt;&lt;endl;        return false;    }    bool findNumberIn2DArray(vector&lt;vector&lt;int&gt;&gt;&amp; matrix, int target) {        int row=0;        int cur=0;        return find(row,cur,target,matrix);    }</code></pre><ul><li>是不是觉得很长，而且关键还是超时了，这也是个不合格的题解，<br><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://img-blog.csdnimg.cn/20201119142506668.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FfU01BS0VfQQ==,size_16,color_FFFFFF,t_70#pic_center" alt="超时情况"></li><li>关键还是只是几个用例没有过，这就很难受了，无奈点开题解，果然大佬就在里面，看了他们的方法重新写了一下</li><li>Code<pre><code>bool findNumberIn2DArray(vector&lt;vector&lt;int&gt;&gt;&amp; matrix, int target) {      int i = matrix.size() - 1, j = 0;      //从左下角（右上角也行）开始搜索，因为这个两个地点刚好满足一边比该点小一边比该点大      while(i &gt;= 0 &amp;&amp; j &lt; matrix[0].size())      {          //如果当前点比目标值大，那么向上移动一行          if(matrix[i][j] &gt; target) i--;          //如果小的话就向右移动一列          else if(matrix[i][j] &lt; target) j++;          //相等就返回true          else return true;      }      //如果查完整个路径都没有的话，返回false      return false;  }</code></pre></li><li>是不是感觉比之前那个好太多了，这完全是暴打我的想法</li><li>其实这个思想就是利用了在左下角和右上角那个点的特殊性，再看一次这个数组的情况：<br>[<br>[1,   4,  7, 11, 15],<br>[2,   5,  8, 12, 19],<br>[3,   6,  9, 16, 22],<br>[10, 13, 14, 17, 24],<br>[18, 21, 23, 26, 30]<br>]<br>我们可以看到左下角和右上角的这两个点的相邻点是一个比它小，一个比它大，这就比我从左上角开始搜索又多了一个可以用的条件，让题目更简单</li></ul><h1 id="感受"><a href="#感受" class="headerlink" title="感受"></a>感受</h1><pre><code>不得不说，就是遇题的get的点不一样，写出的代码就是不也一样，一个简单到几行代码就能AC，另一个又多，而且还是在最后超时，所以这就是思路的问题，完美利用题中所给条件。</code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 题解 剑指offer </category>
+          
+          <category> 做题经验get </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> Github </tag>
+            
+            <tag> 博客 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>博客主页</title>
       <link href="/2020/10/30/zhu-ye/"/>
       <url>/2020/10/30/zhu-ye/</url>
