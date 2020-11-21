@@ -8,7 +8,7 @@
       <link href="/2020/11/21/ti-huan-kong-ge/"/>
       <url>/2020/11/21/ti-huan-kong-ge/</url>
       
-        <content type="html"><![CDATA[<h1 id="题目简介"><a href="#题目简介" class="headerlink" title="题目简介"></a>题目简介</h1><p>请实现一个函数，把字符串 s 中的每个空格替换成”%20”。<br><a href="https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/" target="_blank" rel="noopener">leetcode传送门</a></p><h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><ul><li>如果想把这道题目做到极致，就不要只用额外的辅助空间了</li><li>首先扩充数组到每个空格替换成”%20”之后的大小，可以使用<code>s.resize(num)</code>这个来改变原字符串的长度，<code>num</code>就是你要改变的数组的长度</li><li>然后从后向前替换空格，也就是双指针法</li><li>i指向新长度的末尾，j指向旧长度的末尾</li></ul><h1 id="为什么不从前向后遍历"><a href="#为什么不从前向后遍历" class="headerlink" title="为什么不从前向后遍历"></a>为什么不从前向后遍历</h1><h2 id="这么做有两个好处："><a href="#这么做有两个好处：" class="headerlink" title="这么做有两个好处："></a>这么做有两个好处：</h2><ul><li>不用申请新数组</li><li>从后向前填充元素，避免了从前先后填充元素要来的每次添加元素都要将添加元素之后的所有元素向后移动</li></ul><h1 id="My-Code"><a href="#My-Code" class="headerlink" title="My Code"></a>My Code</h1><pre><code>class Solution {public:    string replaceSpace(string s) {        int count = 0;        //最初这个字符串的长度        int sLen=s.size();        //遍历这个字符串，获得这个字符串的中空格的个数        for(int i = 0; i &lt; sLen - 1; i++){            if(s[i] == ' ') count++;        }        cout&lt;&lt;count&lt;&lt;endl;        //按获得的空格数，重新定义s字符串的长度        s.resize(sLen+count*2);        //添加之后的这个字符串的长度        int sNewLen=s.size();        //从后向前遍历(i表示新的字符串最后的那个位置，j表示之前那个字符串最后的位置)        for(int i = sNewLen - 1,j = sLen - 1; j &lt; i; j--, i--){            //如果j位置处的字符不是一个空格，那么i位置就为这个字符            if(s[j]!=' ') s[i]=s[j];            else{                //否则就在i和i之前的位置出插入%20这个字符                s[i]='0';                s[i-1]='2';                s[i-2]='%';                //更新i的位置                i=i-2;            }        }        return s;    }};</code></pre><h1 id="做题小结"><a href="#做题小结" class="headerlink" title="做题小结"></a>做题小结</h1><p>现在开是准备做剑指offer的题坚持在这上面写自己没次的做题感受，记录自己的做题过程和遇题的想法</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+        <content type="html"><![CDATA[<h1 id="题目简介"><a href="#题目简介" class="headerlink" title="题目简介"></a>题目简介</h1><p>请实现一个函数，把字符串 s 中的每个空格替换成”%20”。<br><a href="https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/" target="_blank" rel="noopener">leetcode传送门</a></p><h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><ul><li>如果想把这道题目做到极致，就不要只用额外的辅助空间了</li><li>首先扩充数组到每个空格替换成”%20”之后的大小，可以使用<code>s.resize(num)</code>这个来改变原字符串的长度，<code>num</code>就是你要改变的数组的长度</li><li>然后从后向前替换空格，也就是双指针法</li><li>i指向新长度的末尾，j指向旧长度的末尾</li></ul><h1 id="为什么不从前向后遍历"><a href="#为什么不从前向后遍历" class="headerlink" title="为什么不从前向后遍历"></a>为什么不从前向后遍历</h1><h2 id="这么做有两个好处："><a href="#这么做有两个好处：" class="headerlink" title="这么做有两个好处："></a>这么做有两个好处：</h2><ul><li>不用申请新数组</li><li>从后向前填充元素，避免了从前先后填充元素要来的每次添加元素都要将添加元素之后的所有元素向后移动</li></ul><h1 id="My-Code"><a href="#My-Code" class="headerlink" title="My Code"></a>My Code</h1><pre><code>class Solution {public:    string replaceSpace(string s) {        int count = 0;        //最初这个字符串的长度        int sLen=s.size();        //遍历这个字符串，获得这个字符串的中空格的个数        for(int i = 0; i &lt; sLen; i++){            if(s[i] == ' ') count++;        }        cout&lt;&lt;count&lt;&lt;endl;        //按获得的空格数，重新定义s字符串的长度        s.resize(sLen+count*2);        //添加之后的这个字符串的长度        int sNewLen=s.size();        //从后向前遍历(i表示新的字符串最后的那个位置，j表示之前那个字符串最后的位置)        for(int i = sNewLen - 1,j = sLen - 1; j &lt; i; j--, i--){            //如果j位置处的字符不是一个空格，那么i位置就为这个字符            if(s[j]!=' ') s[i]=s[j];            else{                //否则就在i和i之前的位置出插入%20这个字符                s[i]='0';                s[i-1]='2';                s[i-2]='%';                //更新i的位置                i=i-2;            }        }        return s;    }};</code></pre><h1 id="做题小结"><a href="#做题小结" class="headerlink" title="做题小结"></a>做题小结</h1><p>现在开是准备做剑指offer的题坚持在这上面写自己没次的做题感受，记录自己的做题过程和遇题的想法</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
       
       
       <categories>
@@ -16,6 +16,35 @@
           <category> 题解 剑指offer </category>
           
           <category> 不走暴力路 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> Github </tag>
+            
+            <tag> 博客 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>chrome页面被百度劫持</title>
+      <link href="/2020/11/19/chrome-bei-bai-du-jie-chi/"/>
+      <url>/2020/11/19/chrome-bei-bai-du-jie-chi/</url>
+      
+        <content type="html"><![CDATA[<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><ul><li>在使用Chrome浏览器打开后直接弹出一个百度的界面</li><li><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://img-blog.csdnimg.cn/20201119223210578.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FfU01BS0VfQQ==,size_16,color_FFFFFF,t_70#pic_center" alt="百度界面"></li><li>这看着就很烦啊，我就想能不能把这个改回来，但改设置里的东西明显没有什么用，试了好多方法还是没什么用</li></ul><h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><ul><li><p>首先找到这个路径，把chrome随便改个名字就行</p></li><li><p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://img-blog.csdnimg.cn/20201119223442843.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FfU01BS0VfQQ==,size_16,color_FFFFFF,t_70#pic_center" alt="重命名"></p></li><li><p>然后问题就解决了</p></li><li><p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://img-blog.csdnimg.cn/20201119223609897.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FfU01BS0VfQQ==,size_16,color_FFFFFF,t_70#pic_center" alt="解决后"></p></li><li><p>不得不说，这种劫持还是很恶心，还是要保持良好的上网习惯</p></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 解决方法 </category>
           
       </categories>
       
@@ -47,35 +76,6 @@
           <category> 题解 剑指offer </category>
           
           <category> 做题经验get </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Hexo </tag>
-            
-            <tag> Github </tag>
-            
-            <tag> 博客 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>chrome页面被百度劫持</title>
-      <link href="/2020/11/19/chrome-bei-bai-du-jie-chi/"/>
-      <url>/2020/11/19/chrome-bei-bai-du-jie-chi/</url>
-      
-        <content type="html"><![CDATA[<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><ul><li>在使用Chrome浏览器打开后直接弹出一个百度的界面</li><li><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://img-blog.csdnimg.cn/20201119223210578.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FfU01BS0VfQQ==,size_16,color_FFFFFF,t_70#pic_center" alt="百度界面"></li><li>这看着就很烦啊，我就想能不能把这个改回来，但改设置里的东西明显没有什么用，试了好多方法还是没什么用</li></ul><h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><ul><li><p>首先找到这个路径，把chrome随便改个名字就行</p></li><li><p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://img-blog.csdnimg.cn/20201119223442843.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FfU01BS0VfQQ==,size_16,color_FFFFFF,t_70#pic_center" alt="重命名"></p></li><li><p>然后问题就解决了</p></li><li><p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://img-blog.csdnimg.cn/20201119223609897.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FfU01BS0VfQQ==,size_16,color_FFFFFF,t_70#pic_center" alt="解决后"></p></li><li><p>不得不说，这种劫持还是很恶心，还是要保持良好的上网习惯</p></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-      
-      
-      <categories>
-          
-          <category> 解决方法 </category>
           
       </categories>
       
