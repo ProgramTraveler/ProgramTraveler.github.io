@@ -806,48 +806,50 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="题目简介"><a href="#题目简介" class="headerlink" title="题目简介"></a>题目简介</h1><p>请实现一个函数，把字符串 s 中的每个空格替换成”%20”。<br><a href="https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/" target="_blank" rel="noopener">leetcode传送门</a></p>
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><ul>
+                <h3 id="题目简介"><a href="#题目简介" class="headerlink" title="题目简介"></a>题目简介</h3><p>请实现一个函数，把字符串 s 中的每个空格替换成”%20”。<br><a href="https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/" target="_blank" rel="noopener">leetcode传送门</a></p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><ul>
 <li>如果想把这道题目做到极致，就不要只用额外的辅助空间了</li>
 <li>首先扩充数组到每个空格替换成”%20”之后的大小，可以使用<code>s.resize(num)</code>这个来改变原字符串的长度，<code>num</code>就是你要改变的数组的长度</li>
 <li>然后从后向前替换空格，也就是双指针法</li>
 <li>i指向新长度的末尾，j指向旧长度的末尾</li>
 </ul>
-<h1 id="为什么不从前向后遍历"><a href="#为什么不从前向后遍历" class="headerlink" title="为什么不从前向后遍历"></a>为什么不从前向后遍历</h1><h2 id="这么做有两个好处："><a href="#这么做有两个好处：" class="headerlink" title="这么做有两个好处："></a>这么做有两个好处：</h2><ul>
+<h3 id="为什么不从前向后遍历"><a href="#为什么不从前向后遍历" class="headerlink" title="为什么不从前向后遍历"></a>为什么不从前向后遍历</h3><h4 id="这么做有两个好处："><a href="#这么做有两个好处：" class="headerlink" title="这么做有两个好处："></a>这么做有两个好处：</h4><ul>
 <li>不用申请新数组</li>
 <li>从后向前填充元素，避免了从前先后填充元素要来的每次添加元素都要将添加元素之后的所有元素向后移动</li>
 </ul>
-<h1 id="My-Code"><a href="#My-Code" class="headerlink" title="My Code"></a>My Code</h1><pre><code>class Solution {
-public:
-    string replaceSpace(string s) {
-        int count = 0;
-        //最初这个字符串的长度
-        int sLen=s.size();
-        //遍历这个字符串，获得这个字符串的中空格的个数
-        for(int i = 0; i &lt; sLen; i++){
-            if(s[i] == ' ') count++;
-        }
-        cout&lt;&lt;count&lt;&lt;endl;
-        //按获得的空格数，重新定义s字符串的长度
-        s.resize(sLen+count*2);
-        //添加之后的这个字符串的长度
-        int sNewLen=s.size();
-        //从后向前遍历(i表示新的字符串最后的那个位置，j表示之前那个字符串最后的位置)
-        for(int i = sNewLen - 1,j = sLen - 1; j &lt; i; j--, i--){
-            //如果j位置处的字符不是一个空格，那么i位置就为这个字符
-            if(s[j]!=' ') s[i]=s[j];
-            else{
-                //否则就在i和i之前的位置出插入%20这个字符
-                s[i]='0';
-                s[i-1]='2';
-                s[i-2]='%';
-                //更新i的位置
-                i=i-2;
-            }
-        }
-        return s;
-    }
-};</code></pre><h1 id="做题小结"><a href="#做题小结" class="headerlink" title="做题小结"></a>做题小结</h1><p>现在开是准备做剑指offer的题坚持在这上面写自己没次的做题感受，记录自己的做题过程和遇题的想法</p>
+<h3 id="My-Code"><a href="#My-Code" class="headerlink" title="My Code"></a>My Code</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    string <span class="token function">replaceSpace</span><span class="token punctuation">(</span>string s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//最初这个字符串的长度</span>
+        <span class="token keyword">int</span> sLen<span class="token operator">=</span>s<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//遍历这个字符串，获得这个字符串的中空格的个数</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> sLen<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">' '</span><span class="token punctuation">)</span> count<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        cout<span class="token operator">&lt;&lt;</span>count<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//按获得的空格数，重新定义s字符串的长度</span>
+        s<span class="token punctuation">.</span><span class="token function">resize</span><span class="token punctuation">(</span>sLen<span class="token operator">+</span>count<span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//添加之后的这个字符串的长度</span>
+        <span class="token keyword">int</span> sNewLen<span class="token operator">=</span>s<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//从后向前遍历(i表示新的字符串最后的那个位置，j表示之前那个字符串最后的位置)</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> sNewLen <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span>j <span class="token operator">=</span> sLen <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> i<span class="token punctuation">;</span> j<span class="token operator">--</span><span class="token punctuation">,</span> i<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//如果j位置处的字符不是一个空格，那么i位置就为这个字符</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">!=</span><span class="token string">' '</span><span class="token punctuation">)</span> s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span>s<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span><span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//否则就在i和i之前的位置出插入%20这个字符</span>
+                s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'0'</span><span class="token punctuation">;</span>
+                s<span class="token punctuation">[</span>i<span class="token number">-1</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'2'</span><span class="token punctuation">;</span>
+                s<span class="token punctuation">[</span>i<span class="token number">-2</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'%'</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//更新i的位置</span>
+                i<span class="token operator">=</span>i<span class="token number">-2</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> s<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="做题小结"><a href="#做题小结" class="headerlink" title="做题小结"></a>做题小结</h3><p>现在开是准备做剑指offer的题坚持在这上面写自己没次的做题感受，记录自己的做题过程和遇题的想法</p>
+<hr>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1807,5 +1809,5 @@ $(function () {
         <!-- 背景动态彩带 洪卫 shw 2018  add 2019.09.15-->
         
 
-    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":200},"mobile":{"show":false},"react":{"opacity":0.7}});</script><script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
+    <script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":200},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
 </html>
