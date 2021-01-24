@@ -803,52 +803,53 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="题目介绍"><a href="#题目介绍" class="headerlink" title="题目介绍"></a>题目介绍</h1><p><a href="https://leetcode-cn.com/problems/sum-root-to-leaf-numbers/" target="_blank" rel="noopener">传送门</a></p>
+                <h3 id="题目介绍"><a href="#题目介绍" class="headerlink" title="题目介绍"></a>题目介绍</h3><p><a href="https://leetcode-cn.com/problems/sum-root-to-leaf-numbers/" target="_blank" rel="noopener">传送门</a></p>
 <hr>
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="思路来源"><a href="#思路来源" class="headerlink" title="思路来源"></a>思路来源</h2><ul>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><h4 id="思路来源"><a href="#思路来源" class="headerlink" title="思路来源"></a>思路来源</h4><ul>
 <li>对一个树进行前序遍历的方法，可以递归也可以迭代，我这里是用递归的方式写的，习惯了。</li>
 <li>那么这个题和前序遍历有什么关系？像[1,2,3]这样的树，最后和为25（12+13），我们注意这个结果的来源是1—&gt;2（12）,然后1—&gt;3（13）,这是不是和前序很像，但还是有区别，我们需要保留有右节点的当前节点，否则就会变成12+3，这样的结果。</li>
 </ul>
-<h2 id="具体思路"><a href="#具体思路" class="headerlink" title="具体思路"></a>具体思路</h2><ul>
-<li><p>首先我们需要一个数来记录最后所有的和 <code>int ans</code>。</p>
-</li>
-<li><p>还需要一个数组来储存节点到叶子节点代表的所有数字 <code>vector&lt;int&gt; res</code>。</p>
-</li>
-<li><p>当然还有一个数来记录从节点到叶子节点的代表数字 <code>int temp</code>。</p>
-</li>
-<li><p>实现的过程和前序遍历一样，在递归的过程中判断当前的节点是否为叶子节点，如果是，那么将叶子节点的值加到<code>temp</code>中，并将<code>temp</code>的值存进<code>res</code>数组中，然后将叶子节点的值取出，更新<code>temp</code>。</p>
-<pre><code>if(root-&gt;left==nullptr &amp;&amp; root-&gt;right==nullptr){
-          //把叶子节点的值加进temp里
-          temp=temp*10+root-&gt;val;
-          //cout&lt;&lt;temp&lt;&lt;endl;
-          //将值传进res数组中
-          res.push_back(temp);
-          //将叶子节点的值取出
-          temp=(temp-(root-&gt;val))/10;
-          return;
-      }</code></pre></li>
-<li><p>如果当前值不是叶子节点，将当前值加入temp，然后判断它的左节点是否为空，如果不为空，继续向左遍历，在遇到叶子节点后，如果当前节点没有右节点 if(root-&gt;right==nullptr) 就开始更新 temp 的值，因为这一条分支的值已经记录了，所以我们需要去找节点的来一条分支，如果我们遇到当前的节点还存在右节点的话，那么我们这个节点就先保留，去记录右节点分支的值。</p>
-<pre><code>//如果不是叶子节点，更新temp的值
-      temp=temp*10+root-&gt;val;
-      //如果它的左节点不为空
-      if(root-&gt;left!=nullptr){
-          //向左遍历
-          DFS(root-&gt;left);
-          //如果它的右节点有值的话，就先不取出这个节点的值，没有就取出
-          if(root-&gt;right==nullptr){
-              temp=(temp-(root-&gt;val))/10;
-          }
-
-      }</code></pre></li>
-<li><p>如果没有左节点，有右节点的话，就向右遍历，在遇到叶子节点后，就开始向上退。</p>
-<pre><code>if(root-&gt;right!=nullptr){
-          //向右遍历
-          DFS(root-&gt;right);
-          //取出右节点的值
-          temp=(temp-(root-&gt;val))/10;
-      }</code></pre></li>
+<h4 id="具体思路"><a href="#具体思路" class="headerlink" title="具体思路"></a>具体思路</h4><ul>
+<li>首先我们需要一个数来记录最后所有的和 <code>int ans</code>。</li>
+<li>还需要一个数组来储存节点到叶子节点代表的所有数字 <code>vector&lt;int&gt; res</code>。</li>
+<li>当然还有一个数来记录从节点到叶子节点的代表数字 <code>int temp</code>。</li>
+<li>实现的过程和前序遍历一样，在递归的过程中判断当前的节点是否为叶子节点，如果是，那么将叶子节点的值加到<code>temp</code>中，并将<code>temp</code>的值存进<code>res</code>数组中，然后将叶子节点的值取出，更新<code>temp</code>。</li>
 </ul>
-<h1 id="全部代码"><a href="#全部代码" class="headerlink" title="全部代码"></a>全部代码</h1><pre><code>/**
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">if</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>left<span class="token operator">==</span><span class="token keyword">nullptr</span> <span class="token operator">&amp;&amp;</span> root<span class="token operator">-</span><span class="token operator">></span>right<span class="token operator">==</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//把叶子节点的值加进temp里</span>
+            temp<span class="token operator">=</span>temp<span class="token operator">*</span><span class="token number">10</span><span class="token operator">+</span>root<span class="token operator">-</span><span class="token operator">></span>val<span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//cout&lt;&lt;temp&lt;&lt;endl;</span>
+            <span class="token comment" spellcheck="true">//将值传进res数组中</span>
+            res<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//将叶子节点的值取出</span>
+            temp<span class="token operator">=</span><span class="token punctuation">(</span>temp<span class="token operator">-</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>val<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">10</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>如果当前值不是叶子节点，将当前值加入temp，然后判断它的左节点是否为空，如果不为空，继续向左遍历，在遇到叶子节点后，如果当前节点没有右节点 if(root-&gt;right==nullptr) 就开始更新 temp 的值，因为这一条分支的值已经记录了，所以我们需要去找节点的来一条分支，如果我们遇到当前的节点还存在右节点的话，那么我们这个节点就先保留，去记录右节点分支的值。</li>
+</ul>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//如果不是叶子节点，更新temp的值</span>
+        temp<span class="token operator">=</span>temp<span class="token operator">*</span><span class="token number">10</span><span class="token operator">+</span>root<span class="token operator">-</span><span class="token operator">></span>val<span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//如果它的左节点不为空</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>left<span class="token operator">!=</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//向左遍历</span>
+            <span class="token function">DFS</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//如果它的右节点有值的话，就先不取出这个节点的值，没有就取出</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>right<span class="token operator">==</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                temp<span class="token operator">=</span><span class="token punctuation">(</span>temp<span class="token operator">-</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>val<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">10</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+        <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>如果没有左节点，有右节点的话，就向右遍历，在遇到叶子节点后，就开始向上退。</li>
+</ul>
+<pre class="line-numbers language-cpp"><code class="language-cpp"> <span class="token keyword">if</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>right<span class="token operator">!=</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//向右遍历</span>
+            <span class="token function">DFS</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//取出右节点的值</span>
+            temp<span class="token operator">=</span><span class="token punctuation">(</span>temp<span class="token operator">-</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>val<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">10</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="全部代码"><a href="#全部代码" class="headerlink" title="全部代码"></a>全部代码</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/**
  * Definition for a binary tree node.
  * struct TreeNode {
  *     int val;
@@ -856,60 +857,62 @@
  *     TreeNode *right;
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
- */
-class Solution {
-public:
-    void DFS(TreeNode* root){
-        //如果这个节点是叶子节点
-        if(root-&gt;left==nullptr &amp;&amp; root-&gt;right==nullptr){
-            //把叶子节点的值加进temp里
-            temp=temp*10+root-&gt;val;
-            //cout&lt;&lt;temp&lt;&lt;endl;
-            //将值传进res数组中
-            res.push_back(temp);
-            //将叶子节点的值取出
-            temp=(temp-(root-&gt;val))/10;
-            return;
-        }
-        //如果不是叶子节点，更新temp的值
-        temp=temp*10+root-&gt;val;
-        //如果它的左节点不为空
-        if(root-&gt;left!=nullptr){
-            //向左遍历
-            DFS(root-&gt;left);
-            //如果它的右节点有值的话，就先不取出这个节点的值，没有就取出
-            if(root-&gt;right==nullptr){
-                temp=(temp-(root-&gt;val))/10;
-            }
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">DFS</span><span class="token punctuation">(</span>TreeNode<span class="token operator">*</span> root<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//如果这个节点是叶子节点</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>left<span class="token operator">==</span><span class="token keyword">nullptr</span> <span class="token operator">&amp;&amp;</span> root<span class="token operator">-</span><span class="token operator">></span>right<span class="token operator">==</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//把叶子节点的值加进temp里</span>
+            temp<span class="token operator">=</span>temp<span class="token operator">*</span><span class="token number">10</span><span class="token operator">+</span>root<span class="token operator">-</span><span class="token operator">></span>val<span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//cout&lt;&lt;temp&lt;&lt;endl;</span>
+            <span class="token comment" spellcheck="true">//将值传进res数组中</span>
+            res<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//将叶子节点的值取出</span>
+            temp<span class="token operator">=</span><span class="token punctuation">(</span>temp<span class="token operator">-</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>val<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">10</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">//如果不是叶子节点，更新temp的值</span>
+        temp<span class="token operator">=</span>temp<span class="token operator">*</span><span class="token number">10</span><span class="token operator">+</span>root<span class="token operator">-</span><span class="token operator">></span>val<span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//如果它的左节点不为空</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>left<span class="token operator">!=</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//向左遍历</span>
+            <span class="token function">DFS</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//如果它的右节点有值的话，就先不取出这个节点的值，没有就取出</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>right<span class="token operator">==</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                temp<span class="token operator">=</span><span class="token punctuation">(</span>temp<span class="token operator">-</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>val<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">10</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
 
-        }
-        //如果它的左节点为空，而右节点不为空
-        if(root-&gt;right!=nullptr){
-            //向右遍历
-            DFS(root-&gt;right);
-            //取出右节点的值
-            temp=(temp-(root-&gt;val))/10;
-        }
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">//如果它的左节点为空，而右节点不为空</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>right<span class="token operator">!=</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//向右遍历</span>
+            <span class="token function">DFS</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//取出右节点的值</span>
+            temp<span class="token operator">=</span><span class="token punctuation">(</span>temp<span class="token operator">-</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>val<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">10</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
 
-    }
-    int sumNumbers(TreeNode* root) {
-        if(!root) return 0; //如果节点为空，返回0
-        //对这棵树进行前序遍历
-        DFS(root);
-        //把节点到叶子节点代表的数的值相加
-        for(int i=0;i&lt;res.size();i++){
-            ans+=res[i];
-        }
-        //返回最终的答案
-        return ans;
+    <span class="token punctuation">}</span>
+    <span class="token keyword">int</span> <span class="token function">sumNumbers</span><span class="token punctuation">(</span>TreeNode<span class="token operator">*</span> root<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>root<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//如果节点为空，返回0</span>
+        <span class="token comment" spellcheck="true">//对这棵树进行前序遍历</span>
+        <span class="token function">DFS</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//把节点到叶子节点代表的数的值相加</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>res<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            ans<span class="token operator">+</span><span class="token operator">=</span>res<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">//返回最终的答案</span>
+        <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
 
-    }
-private:
-    int ans=0;//返回最后的和
-    vector&lt;int&gt; res;//记录节点到叶子节点的代表的数字
-    int temp=0;//临时记录分支里的数字
-};</code></pre><script>
+    <span class="token punctuation">}</span>
+<span class="token keyword">private</span><span class="token operator">:</span>
+    <span class="token keyword">int</span> ans<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//返回最后的和</span>
+    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> res<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//记录节点到叶子节点的代表的数字</span>
+    <span class="token keyword">int</span> temp<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//临时记录分支里的数字</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -1665,7 +1668,7 @@ private:
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">4.6k</span> 字
+                <span class="white-color">4.5k</span> 字
             
 
             
@@ -1863,5 +1866,5 @@ $(function () {
         <!-- 背景动态彩带 洪卫 shw 2018  add 2019.09.15-->
         
 
-    <script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":200},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
+    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":200},"mobile":{"show":false},"react":{"opacity":0.7}});</script><script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
 </html>
