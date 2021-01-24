@@ -786,7 +786,7 @@ public:
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        743
+                        727
                     </div>
                     
 
@@ -805,82 +805,84 @@ public:
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="题目介绍"><a href="#题目介绍" class="headerlink" title="题目介绍"></a>题目介绍</h1><p>传送门：<a href="https://leetcode-cn.com/problems/reorder-list/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/reorder-list/</a></p>
+                <h3 id="题目介绍"><a href="#题目介绍" class="headerlink" title="题目介绍"></a>题目介绍</h3><p>传送门：<a href="https://leetcode-cn.com/problems/reorder-list/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/reorder-list/</a></p>
 <hr>
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><pre><code>class Solution {
-public:
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
 
-    //利用快慢指针来查找链表的中间节点
-    ListNode* MID(ListNode* head){
-        //快指针比慢指针永远快一步
-        ListNode* fast=head;
-        ListNode* slow=head;
-        //当快指针走到末尾时，慢指针则刚好走了一半
-        while(fast!=nullptr &amp;&amp; fast-&gt;next!=nullptr){
-            fast=fast-&gt;next-&gt;next;
-            slow=slow-&gt;next;
-        }
-        //返回慢指针
-        return slow;
+    <span class="token comment" spellcheck="true">//利用快慢指针来查找链表的中间节点</span>
+    ListNode<span class="token operator">*</span> <span class="token function">MID</span><span class="token punctuation">(</span>ListNode<span class="token operator">*</span> head<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//快指针比慢指针永远快一步</span>
+        ListNode<span class="token operator">*</span> fast<span class="token operator">=</span>head<span class="token punctuation">;</span>
+        ListNode<span class="token operator">*</span> slow<span class="token operator">=</span>head<span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//当快指针走到末尾时，慢指针则刚好走了一半</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>fast<span class="token operator">!=</span><span class="token keyword">nullptr</span> <span class="token operator">&amp;&amp;</span> fast<span class="token operator">-</span><span class="token operator">></span>next<span class="token operator">!=</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            fast<span class="token operator">=</span>fast<span class="token operator">-</span><span class="token operator">></span>next<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+            slow<span class="token operator">=</span>slow<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">//返回慢指针</span>
+        <span class="token keyword">return</span> slow<span class="token punctuation">;</span>
 
-    }
-    //对链表进行反转
-    ListNode* REVERSE(ListNode* head){
-        ListNode *pre; //记录前一个节点
-        ListNode *cur; //记录当前节点
-        ListNode *next; //记录下一个节点
-        cur=head;
-        pre=NULL;
-        while(cur!=NULL)
-        {
-            next=cur-&gt;next; //保存cur的下一个节点
-            cur-&gt;next=pre; //令当前节点指向前一个节点
-            pre=cur; //更新pre的值
-            cur=next; //当前节点向后移一位
-        }
-        return pre; //pre此时已经到最后一个节点，也就是反转后的头节点
-    }
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">//对链表进行反转</span>
+    ListNode<span class="token operator">*</span> <span class="token function">REVERSE</span><span class="token punctuation">(</span>ListNode<span class="token operator">*</span> head<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        ListNode <span class="token operator">*</span>pre<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//记录前一个节点</span>
+        ListNode <span class="token operator">*</span>cur<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//记录当前节点</span>
+        ListNode <span class="token operator">*</span>next<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//记录下一个节点</span>
+        cur<span class="token operator">=</span>head<span class="token punctuation">;</span>
+        pre<span class="token operator">=</span><span class="token constant">NULL</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>cur<span class="token operator">!=</span><span class="token constant">NULL</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            next<span class="token operator">=</span>cur<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//保存cur的下一个节点</span>
+            cur<span class="token operator">-</span><span class="token operator">></span>next<span class="token operator">=</span>pre<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//令当前节点指向前一个节点</span>
+            pre<span class="token operator">=</span>cur<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//更新pre的值</span>
+            cur<span class="token operator">=</span>next<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//当前节点向后移一位</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> pre<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//pre此时已经到最后一个节点，也就是反转后的头节点</span>
+    <span class="token punctuation">}</span>
 
 
-    void reorderList(ListNode* head) {
-        if(!head) return;
+    <span class="token keyword">void</span> <span class="token function">reorderList</span><span class="token punctuation">(</span>ListNode<span class="token operator">*</span> head<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>head<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
 
-        ListNode* mid=MID(head); //获取中间节点
-        //cout&lt;&lt;mid-&gt;val;
+        ListNode<span class="token operator">*</span> mid<span class="token operator">=</span><span class="token function">MID</span><span class="token punctuation">(</span>head<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//获取中间节点</span>
+        <span class="token comment" spellcheck="true">//cout&lt;&lt;mid->val;</span>
 
-        //通过中间节点，分为右链表和左链表
-        ListNode* left=head; 
-        ListNode* right=mid-&gt;next;
-        mid-&gt;next=nullptr; //断开链表，分为左右链表
+        <span class="token comment" spellcheck="true">//通过中间节点，分为右链表和左链表</span>
+        ListNode<span class="token operator">*</span> left<span class="token operator">=</span>head<span class="token punctuation">;</span> 
+        ListNode<span class="token operator">*</span> right<span class="token operator">=</span>mid<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+        mid<span class="token operator">-</span><span class="token operator">></span>next<span class="token operator">=</span><span class="token keyword">nullptr</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//断开链表，分为左右链表</span>
 
-        //对右边链表进行反转
-        right=REVERSE(right);
-        //cout&lt;&lt;right-&gt;next-&gt;val;
+        <span class="token comment" spellcheck="true">//对右边链表进行反转</span>
+        right<span class="token operator">=</span><span class="token function">REVERSE</span><span class="token punctuation">(</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//cout&lt;&lt;right->next->val;</span>
 
-        //将左链表和反转后的右链表合并
-        ListNode* L_temp; //保存left当前节点的下一个节点
-        ListNode* R_temp; //保存right当前节点的下一个节点
+        <span class="token comment" spellcheck="true">//将左链表和反转后的右链表合并</span>
+        ListNode<span class="token operator">*</span> L_temp<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//保存left当前节点的下一个节点</span>
+        ListNode<span class="token operator">*</span> R_temp<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//保存right当前节点的下一个节点</span>
 
-        //将两个链表进行合并
-        while(left-&gt;next!=nullptr &amp;&amp; right!=nullptr){
+        <span class="token comment" spellcheck="true">//将两个链表进行合并</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>left<span class="token operator">-</span><span class="token operator">></span>next<span class="token operator">!=</span><span class="token keyword">nullptr</span> <span class="token operator">&amp;&amp;</span> right<span class="token operator">!=</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
 
-            L_temp=left-&gt;next;//保存下一个节点
-            R_temp=right-&gt;next;//保存下一个节点
+            L_temp<span class="token operator">=</span>left<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//保存下一个节点</span>
+            R_temp<span class="token operator">=</span>right<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//保存下一个节点</span>
 
-            //连个链表进行相连
-            left-&gt;next=right; 
-            right-&gt;next=L_temp;
+            <span class="token comment" spellcheck="true">//连个链表进行相连</span>
+            left<span class="token operator">-</span><span class="token operator">></span>next<span class="token operator">=</span>right<span class="token punctuation">;</span> 
+            right<span class="token operator">-</span><span class="token operator">></span>next<span class="token operator">=</span>L_temp<span class="token punctuation">;</span>
 
-            //更新left和right节点的位置
-            left=L_temp;
-            right=R_temp;
-        }
-    }
-};
-</code></pre><hr>
-<h1 id="体会"><a href="#体会" class="headerlink" title="体会"></a>体会</h1><p>在做这个题的时候，一开始想使用双指针的思想，但很快就否定了，因为链表不能从后向前，这个就直接out。这个不行就找其他方法，看了几遍题，就想先去找到这个链表的中点，然后将右边的链表倒置，再重新连接起来，要是不会找链表的中点和对链表进行转置，可以去看这两个题链表的中间节点：<a href="https://leetcode-cn.com/problems/middle-of-the-linked-list/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/middle-of-the-linked-list/</a>和反转链表<a href="https://leetcode-cn.com/problems/reverse-linked-list/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/reverse-linked-list/</a>。</p>
+            <span class="token comment" spellcheck="true">//更新left和right节点的位置</span>
+            left<span class="token operator">=</span>L_temp<span class="token punctuation">;</span>
+            right<span class="token operator">=</span>R_temp<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
-<h1 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h1><p>在把代码写出来后，在提交的时候发现竟然会出现执行错误，但却不出现报错，这就难受了，这样的执行错误连改bug的机会都不给，这样多半是和逻辑没什么关系，看看是不是出现溢出或者什么错误操作，然后我就发现了关键的代码 <code>mid-&gt;next=nullptr;</code> 。要是不添加这个代码的话，就会导致左右链表没有断开，然后出现环的情况。</p>
+<h3 id="体会"><a href="#体会" class="headerlink" title="体会"></a>体会</h3><p>在做这个题的时候，一开始想使用双指针的思想，但很快就否定了，因为链表不能从后向前，这个就直接out。这个不行就找其他方法，看了几遍题，就想先去找到这个链表的中点，然后将右边的链表倒置，再重新连接起来，要是不会找链表的中点和对链表进行转置，可以去看这两个题链表的中间节点：<a href="https://leetcode-cn.com/problems/middle-of-the-linked-list/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/middle-of-the-linked-list/</a>和反转链表<a href="https://leetcode-cn.com/problems/reverse-linked-list/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/reverse-linked-list/</a>。</p>
+<hr>
+<h3 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><p>在把代码写出来后，在提交的时候发现竟然会出现执行错误，但却不出现报错，这就难受了，这样的执行错误连改bug的机会都不给，这样多半是和逻辑没什么关系，看看是不是出现溢出或者什么错误操作，然后我就发现了关键的代码 <code>mid-&gt;next=nullptr;</code> 。要是不添加这个代码的话，就会导致左右链表没有断开，然后出现环的情况。</p>
+<hr>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
