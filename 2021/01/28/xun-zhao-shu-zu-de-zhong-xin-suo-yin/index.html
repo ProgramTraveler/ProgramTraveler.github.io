@@ -6,12 +6,10 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="长按输入, 王久铭">
+    <meta name="keywords" content="寻找数组的中心索引, 王久铭">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY">
-    <meta name="description" content="题目介绍传送门：https://leetcode-cn.com/problems/long-pressed-name/
-
-题解使用双指针，对两个数组进行实时比较，一次循环就能AC，这里说说循环里面需要注意的细节，while循环里这个代码if">
+    <meta name="description" content="题目介绍给定一个整数类型的数组 nums，请编写一个能够返回数组 “中心索引” 的方法。我们是这样定义数组 中心索引 的：数组中心索引的左侧所有元素相加的和等于右侧所有元素相加的和。如果数组不存在中心索引，那么我们应该返回 -1。如果数组有">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>长按输入 | 王久铭</title>
+    <title>寻找数组的中心索引 | 王久铭</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -618,13 +616,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        长按输入
+                        寻找数组的中心索引
                     </div>
                 </div>
             </div>
@@ -753,22 +751,13 @@
                 </div>
                 <div class="col s5 right-align">
                     
-                    <div class="post-cate">
-                        <i class="fa fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/题解-双指针/" class="post-category" target="_blank">
-                                题解 双指针
-                            </a>
-                        
-                    </div>
-                    
                 </div>
             </div>
             
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-10-21
+                    2021-01-28
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -782,7 +771,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        581
+                        498
                     </div>
                     
 
@@ -801,55 +790,36 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="题目介绍"><a href="#题目介绍" class="headerlink" title="题目介绍"></a>题目介绍</h3><p>传送门：<a href="https://leetcode-cn.com/problems/long-pressed-name/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/long-pressed-name/</a></p>
-<hr>
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>使用双指针，对两个数组进行实时比较，一次循环就能AC，这里说说循环里面需要注意的细节，while循环里这个代码<code>if(typed[tem2]==name[tem1])</code>一定要在<code>if(tem2&gt;0 &amp;&amp; typed[tem2]==typed[tem2-1])</code>这个前面，不仅是因为<code>tem2&gt;0</code>，因为你也可以这样写</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">if</span><span class="token punctuation">(</span>tem2<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>typed<span class="token punctuation">[</span>tem2<span class="token punctuation">]</span><span class="token operator">==</span>typed<span class="token punctuation">[</span>tem2<span class="token number">-1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> tem2<span class="token operator">++</span><span class="token punctuation">;</span>
-    <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>typed<span class="token punctuation">[</span>tem2<span class="token punctuation">]</span><span class="token operator">==</span>name<span class="token punctuation">[</span>tem1<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        tem1<span class="token operator">++</span><span class="token punctuation">;</span>
-        tem2<span class="token operator">++</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>但这样写就会导致一个问题，它会去先判断typed的当前字符是否和前一个相同，然后一直tem2++,因为我当时就这样写的，就发现它结束后的值不太正常，就是这个问题导致的。<br><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://img-blog.csdnimg.cn/20201021183712711.jpeg#pic_center" alt="在这里插入图片描述"></p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+                <h3 id="题目介绍"><a href="#题目介绍" class="headerlink" title="题目介绍"></a>题目介绍</h3><p>给定一个整数类型的数组 nums，请编写一个能够返回数组 “中心索引” 的方法。<br>我们是这样定义数组 中心索引 的：数组中心索引的左侧所有元素相加的和等于右侧所有元素相加的和。如果数组不存在中心索引，那么我们应该返回 -1。如果数组有多个中心索引，那么我们应该返回最靠近左边的那一个。</p>
+<p><a href="https://leetcode-cn.com/problems/find-pivot-index/" target="_blank" rel="noopener">leetcode传送们</a></p>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><ul>
+<li>首先对这个数组所有的数进行求和，方便之后在遍历的时候对数组左半部分和右半部分进行比较</li>
+<li>定义两个变量<code>LeftSum</code>和<code>RightSum</code>来分别记录左半部分的和右半部分的和</li>
+<li>在遍历过程中不断更新<code>LeftSum</code>和<code>RightSum</code>并对它们进行比较</li>
+<li><strong>注意：</strong> <code>LeftSum += nums[i]</code>，而<code>RightSum = Sum - LeftSum + nums[i]</code>，如果加上<code>i</code>当前位置的值后，左半部分和右边部分的值是相等的，说明减去<code>i</code>当前位置的值，那么左半部分和右半部分也是相等的，那么<code>i</code>位置就是该数组的中心索引</li>
+</ul>
+<h3 id="MyCode"><a href="#MyCode" class="headerlink" title="MyCode"></a>MyCode</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
-    <span class="token keyword">bool</span> <span class="token function">isLongPressedName</span><span class="token punctuation">(</span>string name<span class="token punctuation">,</span> string typed<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-        <span class="token keyword">int</span> tem1<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//name的指针</span>
-        <span class="token keyword">int</span> tem2<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//typed的指针</span>
-        <span class="token comment" spellcheck="true">//对两个数组进行比较</span>
-        <span class="token keyword">while</span><span class="token punctuation">(</span>tem2<span class="token operator">&lt;</span>typed<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">//如果两个字符相同，就同时向后移</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>typed<span class="token punctuation">[</span>tem2<span class="token punctuation">]</span><span class="token operator">==</span>name<span class="token punctuation">[</span>tem1<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-                tem1<span class="token operator">++</span><span class="token punctuation">;</span>
-                tem2<span class="token operator">++</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>tem2<span class="token operator">></span><span class="token number">0</span> <span class="token operator">&amp;&amp;</span> typed<span class="token punctuation">[</span>tem2<span class="token punctuation">]</span><span class="token operator">==</span>typed<span class="token punctuation">[</span>tem2<span class="token number">-1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> tem2<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//如果name和typed不相同，看typed是否和之前一样，如果一样就移动它</span>
-            <span class="token comment" spellcheck="true">//否则就返回false</span>
-            <span class="token keyword">else</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//最后判断name里的字符是否判断完了</span>
-        <span class="token keyword">return</span> tem1<span class="token operator">==</span>name<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> <span class="token function">pivotIndex</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> Sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//记录整个数组的和</span>
+        <span class="token comment" spellcheck="true">//对数组进行遍历，保存整个数组的和</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i <span class="token operator">++</span><span class="token punctuation">)</span>
+            Sum <span class="token operator">+</span><span class="token operator">=</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//记录左半部分和右半部分的和</span>
+        <span class="token keyword">int</span> LeftSum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> RightSum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//对数组进行遍历</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i <span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//拓展左半部分的和</span>
+            LeftSum <span class="token operator">+</span><span class="token operator">=</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//记录相应的右半部分的和</span>
+            RightSum <span class="token operator">=</span> Sum <span class="token operator">-</span> LeftSum <span class="token operator">+</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//如果左半部分和右半部分的相等，那么当前值就是中心索引</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>LeftSum <span class="token operator">==</span> RightSum<span class="token punctuation">)</span>
+                <span class="token keyword">return</span> i<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>  
+        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//否则就返回-1</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><h3 id="失败的栈处理"><a href="#失败的栈处理" class="headerlink" title="失败的栈处理"></a>失败的栈处理</h3><p>这个我本来想用栈做的，因为之前做过一个比较含退格字符的题目,传送门<a href="https://leetcode-cn.com/problems/backspace-string-compare/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/backspace-string-compare/</a>，我就想这个题应该和那个题也差不多（还是太年轻了）。这个题和那个题差别就在如果在typed的里去通过当前字符和前一个字符是否相同来删除的话，那么如果name本来就是存在重复的字符这个情况就不能处理，所以这是一个失败的栈处理。</p>
-<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-cpp"><code class="language-cpp">    stack<span class="token operator">&lt;</span><span class="token keyword">char</span><span class="token operator">></span> temp<span class="token punctuation">;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>typed<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>temp<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> temp<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>typed<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>typed<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">!=</span>temp<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> temp<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>typed<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">else</span> <span class="token keyword">continue</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">int</span> Num<span class="token operator">=</span>name<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span>temp<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> Num<span class="token operator">>=</span><span class="token number">0</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>temp<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">==</span>name<span class="token punctuation">[</span>Num<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            temp<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Num<span class="token operator">--</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>Num<span class="token operator">&lt;</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-    <span class="token keyword">else</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -1019,7 +989,7 @@
                     </span>
                     <a href="https://programtraveler.github.io" class="b-link-green">王久铭</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2020/10/21/chang-an-shu-ru/" class="b-link-green">长按输入</a>
+                    <a href="/2021/01/28/xun-zhao-shu-zu-de-zhong-xin-suo-yin/" class="b-link-green">寻找数组的中心索引</a>
                 </p>
             </div>
 
@@ -1339,41 +1309,36 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/10/29/qiu-gen-dao-xie-zi-jie-dian/">
+                <a href="/2021/01/28/xun-zhao-shu-zu-de-zhong-xin-suo-yin/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="求根到叶子节点的数字之和">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="寻找数组的中心索引">
                         
-                        <span class="card-title">求根到叶子节点的数字之和</span>
+                        <span class="card-title">寻找数组的中心索引</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            写一下自己对这个题使用前序遍历的思想来解决这个题，我感觉比较有趣
+                            题目介绍给定一个整数类型的数组 nums，请编写一个能够返回数组 “中心索引” 的方法。我们是这样定义数组 中心索引 的：数组中心索引的左侧所有元素相加的和等于右侧所有元素相加的和。如果数组不存在中心索引，那么我们应该返回 -1。如果数组有
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-10-29
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-01-28
+                            </span>
                         <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/题解-深度优先遍历/" class="post-category" target="_blank">
-                                    题解 深度优先遍历
-                                </a>
-                            
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1400,31 +1365,36 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/10/20/chong-pai-lian-biao/">
+                <a href="/2021/01/24/zui-chang-lian-xu-di-zeng-xu-lie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="重排链表">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="最长连续递增序列">
                         
-                        <span class="card-title">重排链表</span>
+                        <span class="card-title">最长连续递增序列</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            今天在做这个题的时候，遇到了一些自己之前没有遇到的问题，在这里记录一下。
+                            题目介绍给定一个未经排序的整数数组，找到最长且 连续递增的子序列，并返回该序列的长度。
+连续递增的子序列 可以由两个下标 l 和 r（l &lt; r）确定，如果对于每个 l &lt;= i &lt; r，都有 nums[i] &lt; n
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-10-20
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-01-24
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/题解-链表/" class="post-category" target="_blank">
-                                    题解 链表
+                            <a href="/categories/题解/" class="post-category" target="_blank">
+                                    题解
+                                </a>
+                            
+                            <a href="/categories/题解/做题经验get/" class="post-category" target="_blank">
+                                    做题经验get
                                 </a>
                             
                             
