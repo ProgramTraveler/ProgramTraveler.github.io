@@ -6,11 +6,10 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="最长连续递增序列, 王久铭">
+    <meta name="keywords" content="缀点成线, 王久铭">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY">
-    <meta name="description" content="题目介绍给定一个未经排序的整数数组，找到最长且 连续递增的子序列，并返回该序列的长度。
-连续递增的子序列 可以由两个下标 l 和 r（l &amp;lt; r）确定，如果对于每个 l &amp;lt;= i &amp;lt; r，都有 nums[i] &amp;lt; n">
+    <meta name="description" content="题目介绍在一个 XY 坐标系中有一些点，我们用数组 coordinates 来分别记录它们的坐标，其中 coordinates[i] = [x, y] 表示横坐标为 x、纵坐标为 y 的点。请你来判断，这些点是否在该坐标系中属于同一条直线上">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>最长连续递增序列 | 王久铭</title>
+    <title>缀点成线 | 王久铭</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -617,13 +616,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        最长连续递增序列
+                        缀点成线
                     </div>
                 </div>
             </div>
@@ -771,7 +770,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-01-24
+                    2021-01-28
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -785,7 +784,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        481
+                        484
                     </div>
                     
 
@@ -804,36 +803,41 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="题目介绍"><a href="#题目介绍" class="headerlink" title="题目介绍"></a>题目介绍</h3><p>给定一个未经排序的整数数组，找到最长且 连续递增的子序列，并返回该序列的长度。</p>
-<p>连续递增的子序列 可以由两个下标 l 和 r（l &lt; r）确定，如果对于每个 l &lt;= i &lt; r，都有 nums[i] &lt; nums[i + 1] ，那么子序列 [nums[l], nums[l + 1], …, nums[r - 1], nums[r]] 就是连续递增子序列。</p>
-<p><a href="https://leetcode-cn.com/problems/longest-continuous-increasing-subsequence" target="_blank" rel="noopener">leetcode传送门</a></p>
-<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><ul>
-<li>定义一个数组<code>dp[]</code>来记录<code>nums[]</code>数组中对应的那个数所能构成的递增序列</li>
-<li>然后对<code>nums[]</code>数组进行遍历，如果 <strong>当前数的下标比 0大，而且比它的值前一个数大</strong>，那么它的<code>dp[i] = dp[i] + dp[i - 1]</code>（可以参考下图），否则就保持不变，直到把<code>nums[]</code>遍历完</li>
-<li>然后找出在<code>dp[]</code>数组中最大的那个数，返回这个数就可以了</li>
+                <h3 id="题目介绍"><a href="#题目介绍" class="headerlink" title="题目介绍"></a>题目介绍</h3><p>在一个 XY 坐标系中有一些点，我们用数组 coordinates 来分别记录它们的坐标，其中 coordinates[i] = [x, y] 表示横坐标为 x、纵坐标为 y 的点。<br>请你来判断，这些点是否在该坐标系中属于同一条直线上，是则返回 true，否则请返回 false。</p>
+<p><a href="https://leetcode-cn.com/problems/check-if-it-is-a-straight-line/" target="_blank" rel="noopener">leetcode原题传送门</a></p>
+<h3 id="解题想法"><a href="#解题想法" class="headerlink" title="解题想法"></a>解题想法</h3><ul>
+<li>看到题目第一眼，就是想到使用斜率来比较，只要两点的斜率和之前的一样，那么说明它们就在一条直线上</li>
 </ul>
-<h3 id="如果图片加载不出可以跳转到了leetcode"><a href="#如果图片加载不出可以跳转到了leetcode" class="headerlink" title="如果图片加载不出可以跳转到了leetcode"></a>如果图片加载不出可以跳转到了leetcode</h3><p><a href="https://leetcode-cn.com/problems/longest-continuous-increasing-subsequence/solution/yi-ci-bian-li-shi-jian-96kong-jian-92-by-p9h1/" target="_blank" rel="noopener">leetcode题解链接</a></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://pic.leetcode-cn.com/1611480876-jcMvwC-image.png" alt="image.png"></p>
-<h3 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h3><p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://pic.leetcode-cn.com/1611479928-hqfRfJ-image.png" alt="image.png"></p>
+<h3 id="具体思路"><a href="#具体思路" class="headerlink" title="具体思路"></a>具体思路</h3><ul>
+<li>从第3个点开始求，因为每次比较的是当前点和第一个点的斜率与第一个点和后一个点的斜率是否一样</li>
+</ul>
+<h3 id="踩的坑"><a href="#踩的坑" class="headerlink" title="踩的坑"></a>踩的坑</h3><ul>
+<li>最开始使用的就是除法来求斜率，这就导致了精度缺失，直接拿来比较的话会出现误差，导致结果错误</li>
+<li>所以推荐使用乘法，这样没有精度丢失，可以保证结果正确</li>
+</ul>
 <h3 id="MyCode"><a href="#MyCode" class="headerlink" title="MyCode"></a>MyCode</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
-    <span class="token keyword">int</span> <span class="token function">findLengthOfLCIS</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//如果原数组为0，则直接返回0</span>
-        <span class="token keyword">int</span> ans <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//记录最长的连续递增序列</span>
-        vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">dp</span><span class="token punctuation">(</span>nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//定义一个数组，数组长度为nums,size()，数全为1</span>
-        <span class="token comment" spellcheck="true">//开始对数组进行遍历</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i <span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">//如果当前数的比前一个数大，那么这个数对应的dp数组中的数就加上前一个数的dp数组中的数</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> nums<span class="token punctuation">[</span>i <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-                dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span><span class="token operator">=</span> dp<span class="token punctuation">[</span>i <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token keyword">else</span> <span class="token keyword">continue</span><span class="token punctuation">;</span>
+    <span class="token keyword">bool</span> <span class="token function">checkStraightLine</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span><span class="token operator">&amp;</span> coordinates<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>coordinates<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//如果只有一个点的话，说明一定是在一条直线上</span>
+        <span class="token comment" spellcheck="true">//求出直线的斜率</span>
+        <span class="token comment" spellcheck="true">//double k = coordinates[1][1] - coordinates[0][1] / coordinates[1][0] - coordinates[0][0];</span>
+        <span class="token comment" spellcheck="true">//按列数遍历</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> coordinates<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i <span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//如果当前点和第一个点的斜率与第一个点所构成的斜率和初始的k不一样，返回false</span>
+            <span class="token comment" spellcheck="true">//double tempK = (coordinates[i][1] - coordinates[0][1]) / (coordinates[i][0] - coordinates[0][0]); </span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span>coordinates<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> coordinates<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>coordinates<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">-</span> coordinates<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+             <span class="token operator">!=</span><span class="token punctuation">(</span>coordinates<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> coordinates<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>coordinates<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">-</span> coordinates<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//找出数组中的最大的那个数</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> dp<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> 
-            ans <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span> dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> ans<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//返回最终结果</span>
+
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><ul>
+<li>能用乘法还是用乘法，不能用乘法想办法用乘法 <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></li>
+</ul>
 <hr>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -1003,7 +1007,7 @@
                     </span>
                     <a href="https://programtraveler.github.io" class="b-link-green">王久铭</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2021/01/24/zui-chang-lian-xu-di-zeng-xu-lie/" class="b-link-green">最长连续递增序列</a>
+                    <a href="/2021/01/28/zhui-dian-cheng-xian/" class="b-link-green">缀点成线</a>
                 </p>
             </div>
 
@@ -1327,19 +1331,19 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/01/28/zhui-dian-cheng-xian/">
+                <a href="/2021/01/28/xun-zhao-shu-zu-de-zhong-xin-suo-yin/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="缀点成线">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="寻找数组的中心索引">
                         
-                        <span class="card-title">缀点成线</span>
+                        <span class="card-title">寻找数组的中心索引</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            题目介绍在一个 XY 坐标系中有一些点，我们用数组 coordinates 来分别记录它们的坐标，其中 coordinates[i] = [x, y] 表示横坐标为 x、纵坐标为 y 的点。请你来判断，这些点是否在该坐标系中属于同一条直线上
+                            题目介绍给定一个整数类型的数组 nums，请编写一个能够返回数组 “中心索引” 的方法。我们是这样定义数组 中心索引 的：数组中心索引的左侧所有元素相加的和等于右侧所有元素相加的和。如果数组不存在中心索引，那么我们应该返回 -1。如果数组有
                         
                     </div>
                     <div class="publish-info">
@@ -1388,38 +1392,36 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/11/21/ti-huan-kong-ge/">
+                <a href="/2021/01/24/zui-chang-lian-xu-di-zeng-xu-lie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="替换空格">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="最长连续递增序列">
                         
-                        <span class="card-title">替换空格</span>
+                        <span class="card-title">最长连续递增序列</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            题目简介请实现一个函数，把字符串 s 中的每个空格替换成”%20”。leetcode传送门
-题解
-如果想把这道题目做到极致，就不要只用额外的辅助空间了
-首先扩充数组到每个空格替换成”%20”之后的大小，可以使用s.resize(num)这个
+                            题目介绍给定一个未经排序的整数数组，找到最长且 连续递增的子序列，并返回该序列的长度。
+连续递增的子序列 可以由两个下标 l 和 r（l &lt; r）确定，如果对于每个 l &lt;= i &lt; r，都有 nums[i] &lt; n
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-11-21
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-01-24
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/题解-剑指offer/" class="post-category" target="_blank">
-                                    题解 剑指offer
+                            <a href="/categories/题解/" class="post-category" target="_blank">
+                                    题解
                                 </a>
                             
-                            <a href="/categories/题解-剑指offer/不走暴力路/" class="post-category" target="_blank">
-                                    不走暴力路
+                            <a href="/categories/题解/做题经验get/" class="post-category" target="_blank">
+                                    做题经验get
                                 </a>
                             
                             
