@@ -6,14 +6,16 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="求根到叶子节点的数字之和, 王久铭">
+    <meta name="keywords" content="Java中的KeyListener设定按键后按下没有效果, 王久铭">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY">
-    <meta name="description" content="题目介绍传送门
+    <meta name="description" content="-前言
+最近写了一个程序，需要用到键盘监听和鼠标监听，鼠标监听到没有Bug ,但在写键盘监听的时候，在监听函数里添加了对键盘值的监听，但按下后却没有反应
+代码如下，当按下空格的时候输出空格被按下
 
-题解思路来源
-对一个树进行前序遍历的方法，可以递归也可以迭代，我这里是用递归的方式写的，习惯了。
-那么这个题和前序遍历有什么关系？像[1,2,3]这样的树，最后和为25（12+13），我们注意这个结果的来源是1—&amp;gt;2">
+
+@Override
+    public">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +23,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>求根到叶子节点的数字之和 | 王久铭</title>
+    <title>Java中的KeyListener设定按键后按下没有效果 | 王久铭</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -620,13 +622,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        求根到叶子节点的数字之和
+                        Java中的KeyListener设定按键后按下没有效果
                     </div>
                 </div>
             </div>
@@ -758,8 +760,16 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/题解-深度优先遍历/" class="post-category" target="_blank">
-                                题解 深度优先遍历
+                            <a href="/categories/经验/" class="post-category" target="_blank">
+                                经验
+                            </a>
+                        
+                            <a href="/categories/经验/项目/" class="post-category" target="_blank">
+                                项目
+                            </a>
+                        
+                            <a href="/categories/经验/项目/问题与解决/" class="post-category" target="_blank">
+                                问题与解决
                             </a>
                         
                     </div>
@@ -770,7 +780,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-10-29
+                    2021-01-29
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -784,14 +794,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        954
+                        225
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        3 分
+                        1 分
                     </div>
                     
                 
@@ -803,114 +813,31 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="题目介绍"><a href="#题目介绍" class="headerlink" title="题目介绍"></a>题目介绍</h3><p><a href="https://leetcode-cn.com/problems/sum-root-to-leaf-numbers/" target="_blank" rel="noopener">传送门</a></p>
+                <h1 id><a href="#" class="headerlink" title="-"></a>-</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul>
+<li>最近写了一个程序，需要用到键盘监听和鼠标监听，鼠标监听到没有<strong>Bug</strong> ,但在写键盘监听的时候，在监听函数里添加了对键盘值的监听，但按下后却没有反应</li>
+<li>代码如下，当按下空格的时候输出空格被按下</li>
+</ul>
+<pre class="line-numbers language-java"><code class="language-java">
+<span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">keyPressed</span><span class="token punctuation">(</span>KeyEvent e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>e<span class="token punctuation">.</span><span class="token function">getKeyCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> KeyEvent<span class="token punctuation">.</span>VK_SPACE<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Systme<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Space"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><h4 id="思路来源"><a href="#思路来源" class="headerlink" title="思路来源"></a>思路来源</h4><ul>
-<li>对一个树进行前序遍历的方法，可以递归也可以迭代，我这里是用递归的方式写的，习惯了。</li>
-<li>那么这个题和前序遍历有什么关系？像[1,2,3]这样的树，最后和为25（12+13），我们注意这个结果的来源是1—&gt;2（12）,然后1—&gt;3（13）,这是不是和前序很像，但还是有区别，我们需要保留有右节点的当前节点，否则就会变成12+3，这样的结果。</li>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><ul>
+<li>当我的空格按下时，却并没有输出<strong>Space</strong>，这就很奇怪了，因为我明明在想要的监听的界面添加了监听</li>
 </ul>
-<h4 id="具体思路"><a href="#具体思路" class="headerlink" title="具体思路"></a>具体思路</h4><ul>
-<li>首先我们需要一个数来记录最后所有的和 <code>int ans</code>。</li>
-<li>还需要一个数组来储存节点到叶子节点代表的所有数字 <code>vector&lt;int&gt; res</code>。</li>
-<li>当然还有一个数来记录从节点到叶子节点的代表数字 <code>int temp</code>。</li>
-<li>实现的过程和前序遍历一样，在递归的过程中判断当前的节点是否为叶子节点，如果是，那么将叶子节点的值加到<code>temp</code>中，并将<code>temp</code>的值存进<code>res</code>数组中，然后将叶子节点的值取出，更新<code>temp</code>。</li>
+<pre class="line-numbers language-cpp"><code class="language-cpp">paExperimentPanel<span class="token punctuation">.</span><span class="token function">addKeyListener</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<hr>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ul>
+<li>后来发现除了需要添加监听外，还需要让监听的界面获得焦点</li>
 </ul>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">if</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>left<span class="token operator">==</span><span class="token keyword">nullptr</span> <span class="token operator">&amp;&amp;</span> root<span class="token operator">-</span><span class="token operator">></span>right<span class="token operator">==</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">//把叶子节点的值加进temp里</span>
-            temp<span class="token operator">=</span>temp<span class="token operator">*</span><span class="token number">10</span><span class="token operator">+</span>root<span class="token operator">-</span><span class="token operator">></span>val<span class="token punctuation">;</span>
-            <span class="token comment" spellcheck="true">//cout&lt;&lt;temp&lt;&lt;endl;</span>
-            <span class="token comment" spellcheck="true">//将值传进res数组中</span>
-            res<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token comment" spellcheck="true">//将叶子节点的值取出</span>
-            temp<span class="token operator">=</span><span class="token punctuation">(</span>temp<span class="token operator">-</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>val<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">10</span><span class="token punctuation">;</span>
-            <span class="token keyword">return</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-java"><code class="language-java">paExperimentPanel<span class="token punctuation">.</span><span class="token function">requestFocusInWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//让其获得焦点，这样才能是键盘监听能够正常使用</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
-<li>如果当前值不是叶子节点，将当前值加入temp，然后判断它的左节点是否为空，如果不为空，继续向左遍历，在遇到叶子节点后，如果当前节点没有右节点 if(root-&gt;right==nullptr) 就开始更新 temp 的值，因为这一条分支的值已经记录了，所以我们需要去找节点的来一条分支，如果我们遇到当前的节点还存在右节点的话，那么我们这个节点就先保留，去记录右节点分支的值。</li>
+<li>可能因为我创建的界面太多，所以需要指定对那个界面进行监听</li>
 </ul>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//如果不是叶子节点，更新temp的值</span>
-        temp<span class="token operator">=</span>temp<span class="token operator">*</span><span class="token number">10</span><span class="token operator">+</span>root<span class="token operator">-</span><span class="token operator">></span>val<span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//如果它的左节点不为空</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>left<span class="token operator">!=</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">//向左遍历</span>
-            <span class="token function">DFS</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token comment" spellcheck="true">//如果它的右节点有值的话，就先不取出这个节点的值，没有就取出</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>right<span class="token operator">==</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-                temp<span class="token operator">=</span><span class="token punctuation">(</span>temp<span class="token operator">-</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>val<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">10</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-
-        <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ul>
-<li>如果没有左节点，有右节点的话，就向右遍历，在遇到叶子节点后，就开始向上退。</li>
-</ul>
-<pre class="line-numbers language-cpp"><code class="language-cpp"> <span class="token keyword">if</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>right<span class="token operator">!=</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">//向右遍历</span>
-            <span class="token function">DFS</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token comment" spellcheck="true">//取出右节点的值</span>
-            temp<span class="token operator">=</span><span class="token punctuation">(</span>temp<span class="token operator">-</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>val<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">10</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="全部代码"><a href="#全部代码" class="headerlink" title="全部代码"></a>全部代码</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */</span>
-<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
-<span class="token keyword">public</span><span class="token operator">:</span>
-    <span class="token keyword">void</span> <span class="token function">DFS</span><span class="token punctuation">(</span>TreeNode<span class="token operator">*</span> root<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">//如果这个节点是叶子节点</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>left<span class="token operator">==</span><span class="token keyword">nullptr</span> <span class="token operator">&amp;&amp;</span> root<span class="token operator">-</span><span class="token operator">></span>right<span class="token operator">==</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">//把叶子节点的值加进temp里</span>
-            temp<span class="token operator">=</span>temp<span class="token operator">*</span><span class="token number">10</span><span class="token operator">+</span>root<span class="token operator">-</span><span class="token operator">></span>val<span class="token punctuation">;</span>
-            <span class="token comment" spellcheck="true">//cout&lt;&lt;temp&lt;&lt;endl;</span>
-            <span class="token comment" spellcheck="true">//将值传进res数组中</span>
-            res<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token comment" spellcheck="true">//将叶子节点的值取出</span>
-            temp<span class="token operator">=</span><span class="token punctuation">(</span>temp<span class="token operator">-</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>val<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">10</span><span class="token punctuation">;</span>
-            <span class="token keyword">return</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//如果不是叶子节点，更新temp的值</span>
-        temp<span class="token operator">=</span>temp<span class="token operator">*</span><span class="token number">10</span><span class="token operator">+</span>root<span class="token operator">-</span><span class="token operator">></span>val<span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//如果它的左节点不为空</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>left<span class="token operator">!=</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">//向左遍历</span>
-            <span class="token function">DFS</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token comment" spellcheck="true">//如果它的右节点有值的话，就先不取出这个节点的值，没有就取出</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>right<span class="token operator">==</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-                temp<span class="token operator">=</span><span class="token punctuation">(</span>temp<span class="token operator">-</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>val<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">10</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-
-        <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//如果它的左节点为空，而右节点不为空</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>right<span class="token operator">!=</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">//向右遍历</span>
-            <span class="token function">DFS</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token comment" spellcheck="true">//取出右节点的值</span>
-            temp<span class="token operator">=</span><span class="token punctuation">(</span>temp<span class="token operator">-</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>val<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">10</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-
-    <span class="token punctuation">}</span>
-    <span class="token keyword">int</span> <span class="token function">sumNumbers</span><span class="token punctuation">(</span>TreeNode<span class="token operator">*</span> root<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>root<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//如果节点为空，返回0</span>
-        <span class="token comment" spellcheck="true">//对这棵树进行前序遍历</span>
-        <span class="token function">DFS</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//把节点到叶子节点代表的数的值相加</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>res<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            ans<span class="token operator">+</span><span class="token operator">=</span>res<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//返回最终的答案</span>
-        <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
-
-    <span class="token punctuation">}</span>
-<span class="token keyword">private</span><span class="token operator">:</span>
-    <span class="token keyword">int</span> ans<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//返回最后的和</span>
-    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> res<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//记录节点到叶子节点的代表的数字</span>
-    <span class="token keyword">int</span> temp<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//临时记录分支里的数字</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
 
             </div>
@@ -1062,7 +989,7 @@
                     </span>
                     <a href="https://programtraveler.github.io" class="b-link-green">王久铭</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2020/10/29/qiu-gen-dao-xie-zi-jie-dian/" class="b-link-green">求根到叶子节点的数字之和</a>
+                    <a href="/2021/01/29/java-zhong-de-keylistener-she-ding-an-jian-hou-an-xia-mei-you-xiao-guo/" class="b-link-green">Java中的KeyListener设定按键后按下没有效果</a>
                 </p>
             </div>
 
@@ -1382,41 +1309,51 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/10/30/zhu-ye/">
+                <a href="/2021/01/29/java-zhong-de-keylistener-she-ding-an-jian-hou-an-xia-mei-you-xiao-guo/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="博客主页">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Java中的KeyListener设定按键后按下没有效果">
                         
-                        <span class="card-title">博客主页</span>
+                        <span class="card-title">Java中的KeyListener设定按键后按下没有效果</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            记录自己在LeetCode做题过程中的心得和感受，以及对LeetCode解题的具体题解和思路，同时也把自己学习知识的总结和学习过程记录下来
+                            这是自己在写项目过程中，遇到的问题和解决办法
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-10-30
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-01-29
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/博客/" class="post-category" target="_blank">
-                                    博客
+                            <a href="/categories/经验/" class="post-category" target="_blank">
+                                    经验
+                                </a>
+                            
+                            <a href="/categories/经验/项目/" class="post-category" target="_blank">
+                                    项目
+                                </a>
+                            
+                            <a href="/categories/经验/项目/问题与解决/" class="post-category" target="_blank">
+                                    问题与解决
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1443,31 +1380,35 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/10/21/chang-an-shu-ru/">
+                <a href="/2021/01/28/xun-zhao-shu-zu-de-zhong-xin-suo-yin/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="长按输入">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="寻找数组的中心索引">
                         
-                        <span class="card-title">长按输入</span>
+                        <span class="card-title">寻找数组的中心索引</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            写一下今天在做双指针的时候遇到的if的逻辑问题和思路问题
+                            题目介绍给定一个整数类型的数组 nums，请编写一个能够返回数组 “中心索引” 的方法。我们是这样定义数组 中心索引 的：数组中心索引的左侧所有元素相加的和等于右侧所有元素相加的和。如果数组不存在中心索引，那么我们应该返回 -1。如果数组有
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-10-21
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-01-28
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/题解-双指针/" class="post-category" target="_blank">
-                                    题解 双指针
+                            <a href="/categories/题解/" class="post-category" target="_blank">
+                                    题解
+                                </a>
+                            
+                            <a href="/categories/题解/做题经验get/" class="post-category" target="_blank">
+                                    做题经验get
                                 </a>
                             
                             
