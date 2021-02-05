@@ -1,0 +1,1831 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+    <!-- shw2018 洪卫  modify 2019.08.15-->
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="尽可能使字符串相等, 王久铭">
+    <meta name="baidu-site-verification" content="fmlEuI34ir">
+    <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY">
+    <meta name="description" content="题目介绍给你两个长度相同的字符串，s 和 t。将 s 中的第 i 个字符变到 t 中的第 i 个字符需要 |s[i] - t[i]| 的开销（开销可能为 0），也就是两个字符的 ASCII 码值的差的绝对值。用于变更字符串的最大预算是 ma">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>尽可能使字符串相等 | 王久铭</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/aos/3.0.0-beta.6/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/lightgallery/1.6.12/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <style type="text/css">
+        
+            
+            code[class*="language-"],
+            pre[class*="language-"] {
+                white-space: pre !important;
+            }
+
+        
+    </style>
+
+    <script src="https://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?46e79e71af0709a5b9106bf20cecc493";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+    
+    
+        <script>
+            (function(){
+                var bp = document.createElement('script');
+                var curProtocol = window.location.protocol.split(':')[0];
+                if (curProtocol === 'https') {
+                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+                }
+                else {
+                    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+                }
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(bp, s);
+            })();
+        </script>
+    
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+    <body>
+
+        <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/SUT.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">王久铭</span>
+                </a>
+            </div>
+            
+
+
+<!-- <a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/AV" class="waves-effect waves-light">
+            
+            <i class="fa fa-music"></i>
+            
+            <span>视听</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/galleries" class="waves-effect waves-light">
+            
+            <i class="fa fa-photo"></i>
+            
+            <span>相册</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于我</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/contact" class="waves-effect waves-light">
+            
+            <i class="fa fa-envelope"></i>
+            
+            <span>留言板</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul> -->
+
+<!-- 支持二级菜单特性 洪卫 shw2018 modify 2019.09.17  -->
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right nav-menu">
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/" class="waves-effect waves-light">
+              
+                <i class="fa fa-home"></i>
+              
+              <span>首页</span>
+            </a>
+
+            
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/tags" class="waves-effect waves-light">
+              
+                <i class="fa fa-tags"></i>
+              
+              <span>标签</span>
+            </a>
+
+            
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/categories" class="waves-effect waves-light">
+              
+                <i class="fa fa-bookmark"></i>
+              
+              <span>分类</span>
+            </a>
+
+            
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/archives" class="waves-effect waves-light">
+              
+                <i class="fa fa-archive"></i>
+              
+              <span>归档</span>
+            </a>
+
+            
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/AV" class="waves-effect waves-light">
+              
+                <i class="fa fa-music"></i>
+              
+              <span>视听</span>
+            </a>
+
+            
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/galleries" class="waves-effect waves-light">
+              
+                <i class="fa fa-photo"></i>
+              
+              <span>相册</span>
+            </a>
+
+            
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/about" class="waves-effect waves-light">
+              
+                <i class="fa fa-user-circle-o"></i>
+              
+              <span>关于我</span>
+            </a>
+
+            
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/contact" class="waves-effect waves-light">
+              
+                <i class="fa fa-envelope"></i>
+              
+              <span>留言板</span>
+            </a>
+
+            
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/friends" class="waves-effect waves-light">
+              
+                <i class="fa fa-address-book"></i>
+              
+              <span>友情链接</span>
+            </a>
+
+            
+      </li>
+    
+
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/SUT.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">王久铭</div>
+        <div class="logo-desc">
+            
+            沈阳工业大学 | 信息科学与工程 | 计算机科学与技术
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/AV" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-music"></i>
+                
+                视听
+            </a>
+        </li>
+        
+        <li>
+            <a href="/galleries" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-photo"></i>
+                
+                相册
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于我
+            </a>
+        </li>
+        
+        <li>
+            <a href="/contact" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-envelope"></i>
+                
+                留言板
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/ProgramTraveler/ProgramTraveler.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+
+   
+   
+<!-- 支持二级菜单特性 洪卫 shw2018 modify 2019.09.17  -->
+<!-- <ul class="menu-list mobile-menu-list">
+    
+        <li class="m-nav-item">
+                
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-home"></i>
+                        
+                        首页
+                    </a>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="/tags" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-tags"></i>
+                        
+                        标签
+                    </a>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="/categories" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-bookmark"></i>
+                        
+                        分类
+                    </a>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="/archives" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-archive"></i>
+                        
+                        归档
+                    </a>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="/AV" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-music"></i>
+                        
+                        视听
+                    </a>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="/galleries" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-photo"></i>
+                        
+                        相册
+                    </a>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="/about" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-user-circle-o"></i>
+                        
+                        关于我
+                    </a>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="/contact" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-envelope"></i>
+                        
+                        留言板
+                    </a>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="/friends" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-address-book"></i>
+                        
+                        友情链接
+                    </a>
+              
+            </li>
+        
+
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/ProgramTraveler/ProgramTraveler.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul> -->
+
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/ProgramTraveler/ProgramTraveler.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+        
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        尽可能使字符串相等
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- shw2018 洪卫  modify 2019.08.15-->
+<!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Hexo/" target="_blank">
+                                <span class="chip bg-color">Hexo</span>
+                            </a>
+                        
+                            <a href="/tags/Github/" target="_blank">
+                                <span class="chip bg-color">Github</span>
+                            </a>
+                        
+                            <a href="/tags/博客/" target="_blank">
+                                <span class="chip bg-color">博客</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/题解/" class="post-category" target="_blank">
+                                题解
+                            </a>
+                        
+                            <a href="/categories/题解/做题经验get/" class="post-category" target="_blank">
+                                做题经验get
+                            </a>
+                        
+                            <a href="/categories/题解/做题经验get/解题模板/" class="post-category" target="_blank">
+                                解题模板
+                            </a>
+                        
+                            <a href="/categories/题解/做题经验get/解题模板/滑动窗口/" class="post-category" target="_blank">
+                                滑动窗口
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-02-05
+                </div>
+
+                <div class="post-author info-break-policy">
+                    <i class="fa fa-user-o fa-fw"></i>作者:&nbsp;&nbsp;
+                    
+                        王久铭
+                    
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        1.3k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        4 分
+                    </div>
+                    
+                
+                
+                
+
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h3 id="题目介绍"><a href="#题目介绍" class="headerlink" title="题目介绍"></a>题目介绍</h3><p>给你两个长度相同的字符串，s 和 t。将 s 中的第 i 个字符变到 t 中的第 i 个字符需要 |s[i] - t[i]| 的开销（开销可能为 0），也就是两个字符的 ASCII 码值的差的绝对值。用于变更字符串的最大预算是 maxCost。在转化字符串时，总开销应当小于等于该预算，这也意味着字符串的转化可能是不完全的。如果你可以将 s 的子字符串转化为它在 t 中对应的子字符串，则返回可以转化的最大长度。如果 s 中没有子字符串可以转化成 t 中对应的子字符串，则返回 0。<br><a href="https://leetcode-cn.com/problems/get-equal-substrings-within-budget/" target="_blank" rel="noopener">leetcode传送门</a></p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><ul>
+<li>这个题其实比较奇特，如果按照题目意思来做，那就可能就会走暴力路（我只能想到暴力了 :smile: ）</li>
+<li>但要是换一个看法，如果我们使用一个<code>cost[i]</code>来记录<code>s[i]</code>转化为<code>t[i]</code>的开销</li>
+<li>这样题目就变成了有一个<code>cost[i]</code>数组，我们去求和不超过<code>maxCost</code>的最长的子数组的长度</li>
+<li>这样就很容易就会想到这类题要使用滑动窗口来做</li>
+</ul>
+<h3 id="滑动窗口模板"><a href="#滑动窗口模板" class="headerlink" title="滑动窗口模板"></a>滑动窗口模板</h3><pre class="line-numbers language-cpp"><code class="language-cpp">def <span class="token function">findSubArray</span><span class="token punctuation">(</span>nums<span class="token punctuation">)</span><span class="token operator">:</span>
+    N <span class="token operator">=</span> <span class="token function">len</span><span class="token punctuation">(</span>nums<span class="token punctuation">)</span> # 数组<span class="token operator">/</span>字符串长度
+    left<span class="token punctuation">,</span> right <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span> # 双指针，表示当前遍历的区间<span class="token punctuation">[</span>left<span class="token punctuation">,</span> right<span class="token punctuation">]</span>，闭区间
+    sums <span class="token operator">=</span> <span class="token number">0</span> # 用于统计 子数组<span class="token operator">/</span>子区间 是否有效，根据题目可能会改成求和<span class="token operator">/</span>计数
+    res <span class="token operator">=</span> <span class="token number">0</span> # 保存最大的满足题目要求的 子数组<span class="token operator">/</span>子串 长度
+    <span class="token keyword">while</span> right <span class="token operator">&lt;</span> N<span class="token operator">:</span> # 当右边的指针没有搜索到 数组<span class="token operator">/</span>字符串 的结尾
+        sums <span class="token operator">+</span><span class="token operator">=</span> nums<span class="token punctuation">[</span>right<span class="token punctuation">]</span> # 增加当前右边指针的数字<span class="token operator">/</span>字符的求和<span class="token operator">/</span>计数
+        <span class="token keyword">while</span> 区间<span class="token punctuation">[</span>left<span class="token punctuation">,</span> right<span class="token punctuation">]</span>不符合题意：# 此时需要一直移动左指针，直至找到一个符合题意的区间
+            sums <span class="token operator">-</span><span class="token operator">=</span> nums<span class="token punctuation">[</span>left<span class="token punctuation">]</span> # 移动左指针前需要从counter中减少left位置字符的求和<span class="token operator">/</span>计数
+            left <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">1</span> # 真正的移动左指针，注意不能跟上面一行代码写反
+        # 到 <span class="token keyword">while</span> 结束时，我们找到了一个符合题意要求的 子数组<span class="token operator">/</span>子串
+        res <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>res<span class="token punctuation">,</span> right <span class="token operator">-</span> left <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> # 需要更新结果
+        right <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">1</span> # 移动右指针，去探索新的区间
+    <span class="token keyword">return</span> res<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="模板分析"><a href="#模板分析" class="headerlink" title="模板分析"></a>模板分析</h3><p>滑动窗口中用到了左右两个指针，它们移动的思路是：以右指针作为驱动，拖着左指针向前走。右指针每次只移动一步，而左指针在内部 while 循环中每次可能移动多步。右指针是主动前移，探索未知的新区域；左指针是被迫移动，负责寻找满足题意的区间。</p>
+<p>模板的整体思想是：</p>
+<p>定义两个指针 left 和 right 分别指向区间的开头和结尾，注意是闭区间；定义 sums 用来统计该区间内的各个字符出现次数；<br>第一重 while 循环是为了判断 right 指针的位置是否超出了数组边界；当 right 每次到了新位置，需要增加 right 指针的求和/计数；<br>第二重 while 循环是让 left 指针向右移动到 [left, right] 区间符合题意的位置；当 left 每次移动到了新位置，需要减少 left 指针的求和/计数；<br>在第二重 while 循环之后，成功找到了一个符合题意的 [left, right] 区间，题目要求最大的区间长度，因此更新 res 为 max(res, 当前区间的长度) 。<br>right 指针每次向右移动一步，开始探索新的区间。<br>模板中的 sums 需要根据题目意思具体去修改，本题是求和题目因此把sums 定义成整数用于求和；如果是计数题目，就需要改成字典用于计数。当左右指针发生变化的时候，都需要更新 sums 。</p>
+<p>另外一个需要根据题目去修改的是内层 while 循环的判断条件，即： 区间[left, right]不符合题意 。对于本题而言，就是该区内的和 sums 超过了 maxCost 。</p>
+<h3 id="题解思路来源"><a href="#题解思路来源" class="headerlink" title="题解思路来源"></a>题解思路来源</h3><p><a href="https://leetcode-cn.com/problems/get-equal-substrings-within-budget/solution/fen-xiang-zhen-cang-de-hua-dong-chuang-k-e3rd/" target="_blank" rel="noopener">传送们</a></p>
+<h3 id="Mycode"><a href="#Mycode" class="headerlink" title="Mycode"></a>Mycode</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">int</span> <span class="token function">equalSubstring</span><span class="token punctuation">(</span>string s<span class="token punctuation">,</span> string t<span class="token punctuation">,</span> <span class="token keyword">int</span> maxCost<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> res <span class="token operator">=</span> INT_MIN<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//记录最终的结果</span>
+        <span class="token keyword">int</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//记录转换消耗的总和</span>
+        <span class="token keyword">int</span> left <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> right <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//左右指针</span>
+        vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">cost</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//保存两个字符串变换需要的消耗</span>
+        <span class="token comment" spellcheck="true">//记录两个字符串的消耗</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> s<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i <span class="token operator">++</span><span class="token punctuation">)</span> 
+            cost<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token function">abs</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> t<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//滑动窗口</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>right <span class="token operator">&lt;</span> s<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            sum <span class="token operator">+</span><span class="token operator">=</span> cost<span class="token punctuation">[</span>right<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//保存交换的消耗</span>
+            <span class="token comment" spellcheck="true">//当消耗超过预设值</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>sum <span class="token operator">></span> maxCost<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//收缩窗口</span>
+                sum <span class="token operator">-</span><span class="token operator">=</span> cost<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                left <span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment" spellcheck="true">//更新最长的字符串</span>
+            res <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>res<span class="token punctuation">,</span> right <span class="token operator">-</span> left <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            right <span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">//返回结果</span>
+        <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>这个还是在两次循环中，但是<code>left</code>循环几乎不怎么动，或者动的很小，所以理论上时间复杂度也不会太高，但在跑数据的时候还是不理想，时间复杂度波动还是很大</li>
+</ul>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力!</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/WeChat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+            
+            
+            <div class="reprint1">
+                <p>
+                    <span class="reprint1-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="https://programtraveler.github.io" class="b-link-green">王久铭</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2021/02/05/jin-ke-neng-shi-zi-fu-chuan-xiang-deng/" class="b-link-green">尽可能使字符串相等</a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+    /* valine 评论框增加背景图片 */
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("") 100% 100% no-repeat;
+    }
+
+    #vcomments input[type=text],
+    #vcomments input[type=email],
+    #vcomments input[type=url],
+    #vcomments textarea {
+        box-sizing: border-box;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    /* 修复评论第一行位置错位 */
+    .v .vlist .vcard {
+    padding-top: 2.5em !important ;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="/libs//libs/jQuery-emoji/dist/css/jquery.emoji.css">
+<script src="/libs//libs/jQuery-emoji/dist/js/jquery.emoji.min.js"></script>
+<script src="/libs//libs/jQuery-emoji/dist/js/emoji.list.js"></script> -->
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'XXXXXXXXXXXXXXXXXXXXXXXX',
+        appKey: 'XXXXXXXXXXXXXXXXXXXXXX',
+        notify: 'true' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'just go go',
+
+    });
+
+//     function parse_emoji() {
+//     jQuery(".vcontent").emojiParse({
+//       basePath: '/libs/jQuery-emoji/images/emoji',
+//       icons: emojiLists   // 注：详见 js/emoji.list.js
+//     });
+//   }
+  
+//   setTimeout(function() {
+//     // jQuery emoji 解析
+//     parse_emoji();
+//     // jquery emoji 初始化
+//     jQuery(".veditor").emoji({
+//       showTab: true,
+//       animation: 'slide',
+//       basePath: '/libs/jQuery-emoji/images/emoji',
+//       icons: emojiLists  // 注：详见 js/emoji.list.js
+//     });
+//     jQuery(".vmore").on("click", function() {
+//       setTimeout(function() {
+//         parse_emoji();
+//       }, 500);
+//     });
+//   }, 800)
+
+</script>
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2021/02/05/jin-ke-neng-shi-zi-fu-chuan-xiang-deng/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="尽可能使字符串相等">
+                        
+                        <span class="card-title">尽可能使字符串相等</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            题目介绍给你两个长度相同的字符串，s 和 t。将 s 中的第 i 个字符变到 t 中的第 i 个字符需要 |s[i] - t[i]| 的开销（开销可能为 0），也就是两个字符的 ASCII 码值的差的绝对值。用于变更字符串的最大预算是 ma
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-02-05
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/题解/" class="post-category" target="_blank">
+                                    题解
+                                </a>
+                            
+                            <a href="/categories/题解/做题经验get/" class="post-category" target="_blank">
+                                    做题经验get
+                                </a>
+                            
+                            <a href="/categories/题解/做题经验get/解题模板/" class="post-category" target="_blank">
+                                    解题模板
+                                </a>
+                            
+                            <a href="/categories/题解/做题经验get/解题模板/滑动窗口/" class="post-category" target="_blank">
+                                    滑动窗口
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Hexo/" target="_blank">
+                        <span class="chip bg-color">Hexo</span>
+                    </a>
+                    
+                    <a href="/tags/Github/" target="_blank">
+                        <span class="chip bg-color">Github</span>
+                    </a>
+                    
+                    <a href="/tags/博客/" target="_blank">
+                        <span class="chip bg-color">博客</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/02/02/hua-dong-chuang-kou-zhong-wei-shu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/25.jpg" class="responsive-img" alt="滑动窗口中位数">
+                        
+                        <span class="card-title">滑动窗口中位数</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            题目介绍中位数是有序序列最中间的那个数。如果序列的长度是偶数，则没有最中间的数；此时中位数是最中间的两个数的平均数。
+例如：
+[2,3,4]，中位数是 3[2,3]，中位数是 (2 + 3) / 2 = 2.5给你一个数组 nums，有一个
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-02-02
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/题解/" class="post-category" target="_blank">
+                                    题解
+                                </a>
+                            
+                            <a href="/categories/题解/做题经验get/" class="post-category" target="_blank">
+                                    做题经验get
+                                </a>
+                            
+                            <a href="/categories/题解/做题经验get/实战的知识/" class="post-category" target="_blank">
+                                    实战的知识
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Hexo/" target="_blank">
+                        <span class="chip bg-color">Hexo</span>
+                    </a>
+                    
+                    <a href="/tags/Github/" target="_blank">
+                        <span class="chip bg-color">Github</span>
+                    </a>
+                    
+                    <a href="/tags/博客/" target="_blank">
+                        <span class="chip bg-color">博客</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 王久铭<br />'
+            + '作者: 王久铭<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h1, h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+        <footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&copy; 2020 - 王久铭. 
+
+            <br>
+            <span id="sitetime"></span><span class="my-face">ღゝ◡╹)ノ♡</span>
+            <br>
+
+            
+
+            
+
+            
+                &nbsp; | &nbsp;字数统计:&nbsp;
+                <span class="white-color">7.9k</span> 字
+            
+
+            
+            <br>
+
+        </div>
+
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/ProgramTraveler" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+ 
+    <a href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=2115655391@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+    <a href="http://wpa.qq.com/msgrd?v=3&uin=2115655391&site=qq&menu=yes" class="tooltipped" target="_blank" data-tooltip="访问我的QQ空间" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<script language=javascript>
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+
+        var t1 = Date.UTC(2020, 07, 10, 00, 00, 00); //北京时间2019-8-1 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes *
+            minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "本站已勉强运行 " + diffYears + " 年 " + diffDays + " 天 " + diffHours +
+            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒" ;
+    } /*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+    siteTime();
+</script>
+
+
+
+
+
+
+        <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+        <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+        <script src="https://cdn.bootcss.com/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="https://cdn.bootcss.com/masonry/4.2.2/masonry.pkgd.min.js"></script>
+        <script src="https://cdn.bootcss.com/aos/3.0.0-beta.6/aos.js"></script>
+        <script src="https://cdn.bootcss.com/scrollprogress/3.0.2/scrollProgress.min.js"></script>
+        <script src="https://cdn.bootcss.com/lightgallery/1.6.12/js/lightgallery-all.min.js"></script>
+        <script src="/js/matery.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+        
+
+        
+
+        <!-- 洪卫 shw2018 add 2019.08.28 -->
+        <script type="text/javascript">
+            var OriginTitile = document.title,
+                st;
+            document.addEventListener("visibilitychange", function () {
+                document.hidden ? (document.title = "看不见我🙈~看不见我🙈~", clearTimeout(st)) : (document.title =
+                    "(๑•̀ㅂ•́) ✧被发现了～", st = setTimeout(function () {
+                        document.title = OriginTitile
+                    }, 3e3))
+            })
+        </script>
+
+        <!-- 鼠标点击烟花爆炸效果  洪卫 shw2018 add 2019.09.09 -->
+        
+
+        <!-- 背景雪花飘落特效洪卫 shw2018 add 2019.09.10 -->
+        
+
+        <!-- 鼠标点击文字特效 洪卫 shw2018 add 2019.09.10-->
+        
+            <script src="/js/wenzi.js" type="text/javascript"></script>
+        
+
+        <!-- 背景雪花飘落特效 洪卫 shw2018 add 2019.09.10 -->
+        
+
+        <!-- 在线聊天工具  洪卫 shw2018 add 2019.09.11 -->
+        
+            <script src="//code.tidio.co/xxxxxxxxxxxxxxxxxxxxxxxxxxx.js"></script>
+            <!--  在线聊天位置自定义  洪卫 shw2018 add 2019.09.13  -->
+            <script> 
+                $(document).ready(function () {
+
+                    setInterval(change_Tidio, 50);  
+                    function change_Tidio() { 
+
+                        var tidio=$("#tidio-chat iframe");
+                        if(tidio.css("display")=="block"&& $(window).width()>977 ){
+                            document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" &&$(window).width()>977)>0? "-40px" : ($("div.toc-title").length&&$(window).width()>977)>0?"80px":"20px";   
+                            document.getElementById("tidio-chat-iframe").style.right="-15px";   
+                            document.getElementById("tidio-chat-iframe").style.height=parseInt(tidio.css("height"))>=520?"520px":tidio.css("height");
+                            document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                        } 
+                        else if(tidio.css("display")=="block"&&$(window).width()>601 &&$(window).width()<992 ){
+                            document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && 601< $(window).width()<992)>0? "-40px":"20px" ;   
+                            document.getElementById("tidio-chat-iframe").style.right="-15px"; 
+                            document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                        }
+                        else if(tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))<230){
+                            document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && $(window).width()<601)>0? "-10px":"45px" ;   
+                            document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                        }
+
+                        if( tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))>=230){
+                            document.getElementById("tidio-chat-iframe").style.zIndex="998";
+                        }
+                    } 
+                }); 
+            </script>
+        
+
+        <!-- 背景 canvas-nest  洪卫 shw 2018  add 2019.09.15-->
+        
+
+        <!-- 背景静止彩带  洪卫 shw 2018  add 2019.09.15-->
+        
+
+        <!-- 背景动态彩带 洪卫 shw 2018  add 2019.09.15-->
+        
+
+    <script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":200},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
+</html>
