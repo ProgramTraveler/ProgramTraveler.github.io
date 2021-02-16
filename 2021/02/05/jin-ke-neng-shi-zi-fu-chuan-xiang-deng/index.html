@@ -813,7 +813,7 @@
             <div id="articleContent">
                 <h3 id="题目介绍"><a href="#题目介绍" class="headerlink" title="题目介绍"></a>题目介绍</h3><p>给你两个长度相同的字符串，s 和 t。将 s 中的第 i 个字符变到 t 中的第 i 个字符需要 |s[i] - t[i]| 的开销（开销可能为 0），也就是两个字符的 ASCII 码值的差的绝对值。用于变更字符串的最大预算是 maxCost。在转化字符串时，总开销应当小于等于该预算，这也意味着字符串的转化可能是不完全的。如果你可以将 s 的子字符串转化为它在 t 中对应的子字符串，则返回可以转化的最大长度。如果 s 中没有子字符串可以转化成 t 中对应的子字符串，则返回 0。<br><a href="https://leetcode-cn.com/problems/get-equal-substrings-within-budget/" target="_blank" rel="noopener">leetcode传送门</a></p>
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><ul>
-<li>这个题其实比较奇特，如果按照题目意思来做，那就可能就会走暴力路（我只能想到暴力了 :smile: ）</li>
+<li>这个题其实比较奇特，如果按照题目意思来做，那就可能就会走暴力路（我只能想到暴力了）</li>
 <li>但要是换一个看法，如果我们使用一个<code>cost[i]</code>来记录<code>s[i]</code>转化为<code>t[i]</code>的开销</li>
 <li>这样题目就变成了有一个<code>cost[i]</code>数组，我们去求和不超过<code>maxCost</code>的最长的子数组的长度</li>
 <li>这样就很容易就会想到这类题要使用滑动窗口来做</li>
@@ -1337,55 +1337,42 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/02/05/jin-ke-neng-shi-zi-fu-chuan-xiang-deng/">
+                <a href="/2021/02/16/if-yu-ju-de-qi-guai-xie-fa/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="尽可能使字符串相等">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="if()语句的奇怪写法">
                         
-                        <span class="card-title">尽可能使字符串相等</span>
+                        <span class="card-title">if()语句的奇怪写法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            题目介绍给你两个长度相同的字符串，s 和 t。将 s 中的第 i 个字符变到 t 中的第 i 个字符需要 |s[i] - t[i]| 的开销（开销可能为 0），也就是两个字符的 ASCII 码值的差的绝对值。用于变更字符串的最大预算是 ma
+                            问题描述
+晚上的时候，看到群里有个人问if(9 &lt; a &lt; 10)这样写为什么会出错，我看了一下，发现我写了那么久的代码，好像没有见过这么写，觉得这跑起来应该会报错，就在leetecode上的PlayGround上简单写了一下，
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-02-05
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-02-16
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/题解/" class="post-category" target="_blank">
-                                    题解
-                                </a>
-                            
-                            <a href="/categories/题解/做题经验get/" class="post-category" target="_blank">
-                                    做题经验get
-                                </a>
-                            
-                            <a href="/categories/题解/做题经验get/解题模板/" class="post-category" target="_blank">
-                                    解题模板
-                                </a>
-                            
-                            <a href="/categories/题解/做题经验get/解题模板/滑动窗口/" class="post-category" target="_blank">
-                                    滑动窗口
+                            <a href="/categories/有趣的逻辑问题/" class="post-category" target="_blank">
+                                    有趣的逻辑问题
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -1629,7 +1616,7 @@
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">7.9k</span> 字
+                <span class="white-color">8.3k</span> 字
             
 
             
