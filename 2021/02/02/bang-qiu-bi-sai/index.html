@@ -6,20 +6,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="chrome页面被百度劫持, 王久铭">
+    <meta name="keywords" content="滑动窗口中位数, 王久铭">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY">
-    <meta name="description" content="问题
-在使用Chrome浏览器打开后直接弹出一个百度的界面
-
-这看着就很烦啊，我就想能不能把这个改回来，但改设置里的东西明显没有什么用，试了好多方法还是没什么用
-
-解决方法
-首先找到这个路径，把chrome随便改个名字就行
-
-
-
-然后问题就">
+    <meta name="description" content="题目介绍你现在是一场采用特殊赛制棒球比赛的记录员。这场比赛由若干回合组成，过去几回合的得分可能会影响以后几回合的得分。
+比赛开始时，记录是空白的。你会得到一个记录操作的字符串列表 ops，其中 ops[i] 是你需要记录的第 i 项操作，o">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -27,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>chrome页面被百度劫持 | 王久铭</title>
+    <title>滑动窗口中位数 | 王久铭</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -626,13 +617,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/24.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/25.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        chrome页面被百度劫持
+                        滑动窗口中位数
                     </div>
                 </div>
             </div>
@@ -764,8 +755,12 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/解决方法/" class="post-category" target="_blank">
-                                解决方法
+                            <a href="/categories/题解/" class="post-category" target="_blank">
+                                题解
+                            </a>
+                        
+                            <a href="/categories/题解/做题经验get/" class="post-category" target="_blank">
+                                做题经验get
                             </a>
                         
                     </div>
@@ -776,7 +771,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-11-19
+                    2021-02-02
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -790,14 +785,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        124
+                        667
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        2 分
                     </div>
                     
                 
@@ -809,24 +804,52 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><ul>
-<li>在使用Chrome浏览器打开后直接弹出一个百度的界面</li>
-<li><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://img-blog.csdnimg.cn/20201119223210578.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FfU01BS0VfQQ==,size_16,color_FFFFFF,t_70#pic_center" alt="百度界面"></li>
-<li>这看着就很烦啊，我就想能不能把这个改回来，但改设置里的东西明显没有什么用，试了好多方法还是没什么用</li>
+                <h3 id="题目介绍"><a href="#题目介绍" class="headerlink" title="题目介绍"></a>题目介绍</h3><p>你现在是一场采用特殊赛制棒球比赛的记录员。这场比赛由若干回合组成，过去几回合的得分可能会影响以后几回合的得分。</p>
+<p>比赛开始时，记录是空白的。你会得到一个记录操作的字符串列表 ops，其中 ops[i] 是你需要记录的第 i 项操作，ops 遵循下述规则：</p>
+<p>整数 x - 表示本回合新获得分数 x<br>“+” - 表示本回合新获得的得分是前两次得分的总和。题目数据保证记录此操作时前面总是存在两个有效的分数。<br>“D” - 表示本回合新获得的得分是前一次得分的两倍。题目数据保证记录此操作时前面总是存在一个有效的分数。<br>“C” - 表示前一次得分无效，将其从记录中移除。题目数据保证记录此操作时前面总是存在一个有效的分数。<br>请你返回记录中所有得分的总和。</p>
+<p><a href="https://leetcode-cn.com/problems/baseball-game" target="_blank" rel="noopener">leetecode传送们</a></p>
+<h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><ul>
+<li>其实看到这个题很简单，相当于按照条件来进行运算，对不同的情况，进行处理就好了</li>
 </ul>
-<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ul>
-<li><p>首先找到这个路径，把chrome随便改个名字就行</p>
+<h4 id="MyCode"><a href="#MyCode" class="headerlink" title="MyCode"></a>MyCode</h4><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">int</span> <span class="token function">calPoints</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>string<span class="token operator">></span><span class="token operator">&amp;</span> ops<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> ans<span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>string c <span class="token operator">:</span> ops<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">==</span> <span class="token string">"C"</span><span class="token punctuation">)</span>
+                ans<span class="token punctuation">.</span><span class="token function">pop_back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">==</span> <span class="token string">"D"</span><span class="token punctuation">)</span>
+                ans<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>ans<span class="token punctuation">[</span>ans<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">==</span> <span class="token string">"+"</span><span class="token punctuation">)</span>
+                ans<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>ans<span class="token punctuation">[</span>ans<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> ans<span class="token punctuation">[</span>ans<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span>
+                ans<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span><span class="token function">stoi</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//把数字字符串转换为int型</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> ans<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i <span class="token operator">++</span><span class="token punctuation">)</span>
+            res <span class="token operator">+</span><span class="token operator">=</span> ans<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h3><ul>
+<li>这个题我主要是来记录一下对数字字符串转换为<code>int</code>的数字，因为这个题是<code>string</code>类型的，所以不能做 <strong>“5” - “0”</strong> 这样的操作，如果是<code>char</code>类型，这样的操作是可以的</li>
+<li>所以在这个题中，我用的是<code>stoi</code>这个函数，其实还有一个<code>atoi</code>也可以用，但是它们两个有区别</li>
+</ul>
+<h4 id="stoi和atoi的区别"><a href="#stoi和atoi的区别" class="headerlink" title="stoi和atoi的区别"></a>stoi和atoi的区别</h4><h5 id="相同点："><a href="#相同点：" class="headerlink" title="相同点："></a>相同点：</h5><ul>
+<li><p>①都是C++的字符处理函数，把数字字符串转换成int输出</p>
 </li>
-<li><p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://img-blog.csdnimg.cn/20201119223442843.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FfU01BS0VfQQ==,size_16,color_FFFFFF,t_70#pic_center" alt="重命名"></p>
-</li>
-<li><p>然后问题就解决了</p>
-</li>
-<li><p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://img-blog.csdnimg.cn/20201119223609897.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FfU01BS0VfQQ==,size_16,color_FFFFFF,t_70#pic_center" alt="解决后"></p>
-</li>
-<li><p>不得不说，这种劫持还是很恶心，还是要保持良好的上网习惯</p>
+<li><p>②头文件都是<code>#include&lt;cstring&gt;</code></p>
 </li>
 </ul>
-<hr>
+<h5 id="不同点："><a href="#不同点：" class="headerlink" title="不同点："></a>不同点：</h5><ul>
+<li><p>①<code>atoi()</code>的参数是 <code>const char*</code> ,因此对于一个字符串<code>str</code>我们必须调用 <code>c_str(</code>)的方法把这个<code>string</code>转换成 <code>const char*</code>类型的,而<code>stoi()</code>的参数是<code>const string*</code>,不需要转化为 <code>const char*</code>；</p>
+</li>
+<li><p>②<code>stoi()</code>会做范围检查，默认范围是在<code>int</code>的范围内的，如果超出范围的话则会<code>runtime error！</code>而<code>atoi()</code>不会做范围检查，如果超出范围的话，超出上界，则输出上界，超出下界，则输出下界</p>
+</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>这样看还是用<code>stoi</code>好一点</li>
+</ul>
 
             </div>
             <hr/>
@@ -977,7 +1000,7 @@
                     </span>
                     <a href="https://programtraveler.github.io" class="b-link-green">王久铭</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2020/11/19/chrome-bei-bai-du-jie-chi/" class="b-link-green">chrome页面被百度劫持</a>
+                    <a href="/2021/02/02/bang-qiu-bi-sai/" class="b-link-green">滑动窗口中位数</a>
                 </p>
             </div>
 
@@ -1301,38 +1324,43 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/11/21/ti-huan-kong-ge/">
+                <a href="/2021/02/05/jin-ke-neng-shi-zi-fu-chuan-xiang-deng/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="替换空格">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="尽可能使字符串相等">
                         
-                        <span class="card-title">替换空格</span>
+                        <span class="card-title">尽可能使字符串相等</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            题目简介请实现一个函数，把字符串 s 中的每个空格替换成”%20”。leetcode传送门
-题解
-如果想把这道题目做到极致，就不要只用额外的辅助空间了
-首先扩充数组到每个空格替换成”%20”之后的大小，可以使用s.resize(num)这个
+                            题目介绍给你两个长度相同的字符串，s 和 t。将 s 中的第 i 个字符变到 t 中的第 i 个字符需要 |s[i] - t[i]| 的开销（开销可能为 0），也就是两个字符的 ASCII 码值的差的绝对值。用于变更字符串的最大预算是 ma
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-11-21
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-02-05
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/题解-剑指offer/" class="post-category" target="_blank">
-                                    题解 剑指offer
+                            <a href="/categories/题解/" class="post-category" target="_blank">
+                                    题解
                                 </a>
                             
-                            <a href="/categories/题解-剑指offer/不走暴力路/" class="post-category" target="_blank">
-                                    不走暴力路
+                            <a href="/categories/题解/做题经验get/" class="post-category" target="_blank">
+                                    做题经验get
+                                </a>
+                            
+                            <a href="/categories/题解/做题经验get/解题模板/" class="post-category" target="_blank">
+                                    解题模板
+                                </a>
+                            
+                            <a href="/categories/题解/做题经验get/解题模板/滑动窗口/" class="post-category" target="_blank">
+                                    滑动窗口
                                 </a>
                             
                             
@@ -1365,35 +1393,41 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/11/19/er-wei-shu-zu-de-cha-zhao/">
+                <a href="/2021/02/02/hua-dong-chuang-kou-zhong-wei-shu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="二维数组的查找">
+                        <img src="/medias/featureimages/25.jpg" class="responsive-img" alt="滑动窗口中位数">
                         
-                        <span class="card-title">二维数组的查找</span>
+                        <span class="card-title">滑动窗口中位数</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            在做这个剑指offer的题的时候，换个角度让问题变的不是简单的一丁点，给我震撼到了
+                            题目介绍中位数是有序序列最中间的那个数。如果序列的长度是偶数，则没有最中间的数；此时中位数是最中间的两个数的平均数。
+例如：
+[2,3,4]，中位数是 3[2,3]，中位数是 (2 + 3) / 2 = 2.5给你一个数组 nums，有一个
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-11-19
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-02-02
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/题解-剑指offer/" class="post-category" target="_blank">
-                                    题解 剑指offer
+                            <a href="/categories/题解/" class="post-category" target="_blank">
+                                    题解
                                 </a>
                             
-                            <a href="/categories/题解-剑指offer/做题经验get/" class="post-category" target="_blank">
+                            <a href="/categories/题解/做题经验get/" class="post-category" target="_blank">
                                     做题经验get
+                                </a>
+                            
+                            <a href="/categories/题解/做题经验get/实战的知识/" class="post-category" target="_blank">
+                                    实战的知识
                                 </a>
                             
                             
