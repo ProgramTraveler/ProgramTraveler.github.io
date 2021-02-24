@@ -6,10 +6,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="尽可能使字符串相等, 王久铭">
+    <meta name="keywords" content="棒球比赛, 王久铭">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY">
-    <meta name="description" content="题目介绍给你两个长度相同的字符串，s 和 t。将 s 中的第 i 个字符变到 t 中的第 i 个字符需要 |s[i] - t[i]| 的开销（开销可能为 0），也就是两个字符的 ASCII 码值的差的绝对值。用于变更字符串的最大预算是 ma">
+    <meta name="description" content="题目介绍你现在是一场采用特殊赛制棒球比赛的记录员。这场比赛由若干回合组成，过去几回合的得分可能会影响以后几回合的得分。
+比赛开始时，记录是空白的。你会得到一个记录操作的字符串列表 ops，其中 ops[i] 是你需要记录的第 i 项操作，o">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>尽可能使字符串相等 | 王久铭</title>
+    <title>棒球比赛 | 王久铭</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -616,13 +617,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        尽可能使字符串相等
+                        棒球比赛
                     </div>
                 </div>
             </div>
@@ -762,14 +763,6 @@
                                 做题经验get
                             </a>
                         
-                            <a href="/categories/题解/做题经验get/解题模板/" class="post-category" target="_blank">
-                                解题模板
-                            </a>
-                        
-                            <a href="/categories/题解/做题经验get/解题模板/滑动窗口/" class="post-category" target="_blank">
-                                滑动窗口
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -778,7 +771,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-02-05
+                    2021-02-24
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -792,14 +785,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.3k
+                        667
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        4 分
+                        2 分
                     </div>
                     
                 
@@ -811,61 +804,51 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="题目介绍"><a href="#题目介绍" class="headerlink" title="题目介绍"></a>题目介绍</h3><p>给你两个长度相同的字符串，s 和 t。将 s 中的第 i 个字符变到 t 中的第 i 个字符需要 |s[i] - t[i]| 的开销（开销可能为 0），也就是两个字符的 ASCII 码值的差的绝对值。用于变更字符串的最大预算是 maxCost。在转化字符串时，总开销应当小于等于该预算，这也意味着字符串的转化可能是不完全的。如果你可以将 s 的子字符串转化为它在 t 中对应的子字符串，则返回可以转化的最大长度。如果 s 中没有子字符串可以转化成 t 中对应的子字符串，则返回 0。<br><a href="https://leetcode-cn.com/problems/get-equal-substrings-within-budget/" target="_blank" rel="noopener">leetcode传送门</a></p>
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><ul>
-<li>这个题其实比较奇特，如果按照题目意思来做，那就可能就会走暴力路（我只能想到暴力了）</li>
-<li>但要是换一个看法，如果我们使用一个<code>cost[i]</code>来记录<code>s[i]</code>转化为<code>t[i]</code>的开销</li>
-<li>这样题目就变成了有一个<code>cost[i]</code>数组，我们去求和不超过<code>maxCost</code>的最长的子数组的长度</li>
-<li>这样就很容易就会想到这类题要使用滑动窗口来做</li>
+                <h3 id="题目介绍"><a href="#题目介绍" class="headerlink" title="题目介绍"></a>题目介绍</h3><p>你现在是一场采用特殊赛制棒球比赛的记录员。这场比赛由若干回合组成，过去几回合的得分可能会影响以后几回合的得分。</p>
+<p>比赛开始时，记录是空白的。你会得到一个记录操作的字符串列表 ops，其中 ops[i] 是你需要记录的第 i 项操作，ops 遵循下述规则：</p>
+<p>整数 x - 表示本回合新获得分数 x<br>“+” - 表示本回合新获得的得分是前两次得分的总和。题目数据保证记录此操作时前面总是存在两个有效的分数。<br>“D” - 表示本回合新获得的得分是前一次得分的两倍。题目数据保证记录此操作时前面总是存在一个有效的分数。<br>“C” - 表示前一次得分无效，将其从记录中移除。题目数据保证记录此操作时前面总是存在一个有效的分数。<br>请你返回记录中所有得分的总和。</p>
+<p><a href="https://leetcode-cn.com/problems/baseball-game" target="_blank" rel="noopener">leetecode传送们</a></p>
+<h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><ul>
+<li>其实看到这个题很简单，相当于按照条件来进行运算，对不同的情况，进行处理就好了</li>
 </ul>
-<h3 id="滑动窗口模板"><a href="#滑动窗口模板" class="headerlink" title="滑动窗口模板"></a>滑动窗口模板</h3><pre class="line-numbers language-cpp"><code class="language-cpp">def <span class="token function">findSubArray</span><span class="token punctuation">(</span>nums<span class="token punctuation">)</span><span class="token operator">:</span>
-    N <span class="token operator">=</span> <span class="token function">len</span><span class="token punctuation">(</span>nums<span class="token punctuation">)</span> # 数组<span class="token operator">/</span>字符串长度
-    left<span class="token punctuation">,</span> right <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span> # 双指针，表示当前遍历的区间<span class="token punctuation">[</span>left<span class="token punctuation">,</span> right<span class="token punctuation">]</span>，闭区间
-    sums <span class="token operator">=</span> <span class="token number">0</span> # 用于统计 子数组<span class="token operator">/</span>子区间 是否有效，根据题目可能会改成求和<span class="token operator">/</span>计数
-    res <span class="token operator">=</span> <span class="token number">0</span> # 保存最大的满足题目要求的 子数组<span class="token operator">/</span>子串 长度
-    <span class="token keyword">while</span> right <span class="token operator">&lt;</span> N<span class="token operator">:</span> # 当右边的指针没有搜索到 数组<span class="token operator">/</span>字符串 的结尾
-        sums <span class="token operator">+</span><span class="token operator">=</span> nums<span class="token punctuation">[</span>right<span class="token punctuation">]</span> # 增加当前右边指针的数字<span class="token operator">/</span>字符的求和<span class="token operator">/</span>计数
-        <span class="token keyword">while</span> 区间<span class="token punctuation">[</span>left<span class="token punctuation">,</span> right<span class="token punctuation">]</span>不符合题意：# 此时需要一直移动左指针，直至找到一个符合题意的区间
-            sums <span class="token operator">-</span><span class="token operator">=</span> nums<span class="token punctuation">[</span>left<span class="token punctuation">]</span> # 移动左指针前需要从counter中减少left位置字符的求和<span class="token operator">/</span>计数
-            left <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">1</span> # 真正的移动左指针，注意不能跟上面一行代码写反
-        # 到 <span class="token keyword">while</span> 结束时，我们找到了一个符合题意要求的 子数组<span class="token operator">/</span>子串
-        res <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>res<span class="token punctuation">,</span> right <span class="token operator">-</span> left <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> # 需要更新结果
-        right <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">1</span> # 移动右指针，去探索新的区间
-    <span class="token keyword">return</span> res<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="模板分析"><a href="#模板分析" class="headerlink" title="模板分析"></a>模板分析</h3><p>滑动窗口中用到了左右两个指针，它们移动的思路是：以右指针作为驱动，拖着左指针向前走。右指针每次只移动一步，而左指针在内部 while 循环中每次可能移动多步。右指针是主动前移，探索未知的新区域；左指针是被迫移动，负责寻找满足题意的区间。</p>
-<p>模板的整体思想是：</p>
-<p>定义两个指针 left 和 right 分别指向区间的开头和结尾，注意是闭区间；定义 sums 用来统计该区间内的各个字符出现次数；<br>第一重 while 循环是为了判断 right 指针的位置是否超出了数组边界；当 right 每次到了新位置，需要增加 right 指针的求和/计数；<br>第二重 while 循环是让 left 指针向右移动到 [left, right] 区间符合题意的位置；当 left 每次移动到了新位置，需要减少 left 指针的求和/计数；<br>在第二重 while 循环之后，成功找到了一个符合题意的 [left, right] 区间，题目要求最大的区间长度，因此更新 res 为 max(res, 当前区间的长度) 。<br>right 指针每次向右移动一步，开始探索新的区间。<br>模板中的 sums 需要根据题目意思具体去修改，本题是求和题目因此把sums 定义成整数用于求和；如果是计数题目，就需要改成字典用于计数。当左右指针发生变化的时候，都需要更新 sums 。</p>
-<p>另外一个需要根据题目去修改的是内层 while 循环的判断条件，即： 区间[left, right]不符合题意 。对于本题而言，就是该区内的和 sums 超过了 maxCost 。</p>
-<h3 id="题解思路来源"><a href="#题解思路来源" class="headerlink" title="题解思路来源"></a>题解思路来源</h3><p><a href="https://leetcode-cn.com/problems/get-equal-substrings-within-budget/solution/fen-xiang-zhen-cang-de-hua-dong-chuang-k-e3rd/" target="_blank" rel="noopener">传送们</a></p>
-<h3 id="Mycode"><a href="#Mycode" class="headerlink" title="Mycode"></a>Mycode</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<h4 id="MyCode"><a href="#MyCode" class="headerlink" title="MyCode"></a>MyCode</h4><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
-    <span class="token keyword">int</span> <span class="token function">equalSubstring</span><span class="token punctuation">(</span>string s<span class="token punctuation">,</span> string t<span class="token punctuation">,</span> <span class="token keyword">int</span> maxCost<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">int</span> res <span class="token operator">=</span> INT_MIN<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//记录最终的结果</span>
-        <span class="token keyword">int</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//记录转换消耗的总和</span>
-        <span class="token keyword">int</span> left <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> right <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//左右指针</span>
-        vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">cost</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//保存两个字符串变换需要的消耗</span>
-        <span class="token comment" spellcheck="true">//记录两个字符串的消耗</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> s<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i <span class="token operator">++</span><span class="token punctuation">)</span> 
-            cost<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token function">abs</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> t<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//滑动窗口</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>right <span class="token operator">&lt;</span> s<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            sum <span class="token operator">+</span><span class="token operator">=</span> cost<span class="token punctuation">[</span>right<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//保存交换的消耗</span>
-            <span class="token comment" spellcheck="true">//当消耗超过预设值</span>
-            <span class="token keyword">while</span> <span class="token punctuation">(</span>sum <span class="token operator">></span> maxCost<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token comment" spellcheck="true">//收缩窗口</span>
-                sum <span class="token operator">-</span><span class="token operator">=</span> cost<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token punctuation">;</span>
-                left <span class="token operator">++</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            <span class="token comment" spellcheck="true">//更新最长的字符串</span>
-            res <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>res<span class="token punctuation">,</span> right <span class="token operator">-</span> left <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            right <span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> <span class="token function">calPoints</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>string<span class="token operator">></span><span class="token operator">&amp;</span> ops<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> ans<span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>string c <span class="token operator">:</span> ops<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">==</span> <span class="token string">"C"</span><span class="token punctuation">)</span>
+                ans<span class="token punctuation">.</span><span class="token function">pop_back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">==</span> <span class="token string">"D"</span><span class="token punctuation">)</span>
+                ans<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>ans<span class="token punctuation">[</span>ans<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">==</span> <span class="token string">"+"</span><span class="token punctuation">)</span>
+                ans<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>ans<span class="token punctuation">[</span>ans<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> ans<span class="token punctuation">[</span>ans<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span>
+                ans<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span><span class="token function">stoi</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//把数字字符串转换为int型</span>
         <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//返回结果</span>
+        <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> ans<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i <span class="token operator">++</span><span class="token punctuation">)</span>
+            res <span class="token operator">+</span><span class="token operator">=</span> ans<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
         <span class="token keyword">return</span> res<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h3><ul>
+<li>这个题我主要是来记录一下对数字字符串转换为<code>int</code>的数字，因为这个题是<code>string</code>类型的，所以不能做 <strong>“5” - “0”</strong> 这样的操作，如果是<code>char</code>类型，这样的操作是可以的</li>
+<li>所以在这个题中，我用的是<code>stoi</code>这个函数，其实还有一个<code>atoi</code>也可以用，但是它们两个有区别</li>
+</ul>
+<h4 id="stoi和atoi的区别"><a href="#stoi和atoi的区别" class="headerlink" title="stoi和atoi的区别"></a>stoi和atoi的区别</h4><h5 id="相同点："><a href="#相同点：" class="headerlink" title="相同点："></a>相同点：</h5><ul>
+<li><p>①都是C++的字符处理函数，把数字字符串转换成int输出</p>
+</li>
+<li><p>②头文件都是<code>#include&lt;cstring&gt;</code></p>
+</li>
+</ul>
+<h5 id="不同点："><a href="#不同点：" class="headerlink" title="不同点："></a>不同点：</h5><ul>
+<li><p>①<code>atoi()</code>的参数是 <code>const char*</code> ,因此对于一个字符串<code>str</code>我们必须调用 <code>c_str(</code>)的方法把这个<code>string</code>转换成 <code>const char*</code>类型的,而<code>stoi()</code>的参数是<code>const string*</code>,不需要转化为 <code>const char*</code>；</p>
+</li>
+<li><p>②<code>stoi()</code>会做范围检查，默认范围是在<code>int</code>的范围内的，如果超出范围的话则会<code>runtime error！</code>而<code>atoi()</code>不会做范围检查，如果超出范围的话，超出上界，则输出上界，超出下界，则输出下界</p>
+</li>
+</ul>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
-<li>这个还是在两次循环中，但是<code>left</code>循环几乎不怎么动，或者动的很小，所以理论上时间复杂度也不会太高，但在跑数据的时候还是不理想，时间复杂度波动还是很大</li>
+<li>这样看还是用<code>stoi</code>好一点</li>
 </ul>
 
             </div>
@@ -1017,7 +1000,7 @@
                     </span>
                     <a href="https://programtraveler.github.io" class="b-link-green">王久铭</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2021/02/05/jin-ke-neng-shi-zi-fu-chuan-xiang-deng/" class="b-link-green">尽可能使字符串相等</a>
+                    <a href="/2021/02/24/bang-qiu-bi-sai/" class="b-link-green">棒球比赛</a>
                 </p>
             </div>
 
@@ -1337,42 +1320,48 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/02/16/if-yu-ju-de-qi-guai-xie-fa/">
+                <a href="/2021/02/24/bang-qiu-bi-sai/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="if()语句的奇怪写法">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="棒球比赛">
                         
-                        <span class="card-title">if()语句的奇怪写法</span>
+                        <span class="card-title">棒球比赛</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            问题描述
-晚上的时候，看到群里有个人问if(9 &lt; a &lt; 10)这样写为什么会出错，我看了一下，发现我写了那么久的代码，好像没有见过这么写，觉得这跑起来应该会报错，就在leetecode上的PlayGround上简单写了一下，
+                            题目介绍你现在是一场采用特殊赛制棒球比赛的记录员。这场比赛由若干回合组成，过去几回合的得分可能会影响以后几回合的得分。
+比赛开始时，记录是空白的。你会得到一个记录操作的字符串列表 ops，其中 ops[i] 是你需要记录的第 i 项操作，o
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-02-16
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-02-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/有趣的逻辑问题/" class="post-category" target="_blank">
-                                    有趣的逻辑问题
+                            <a href="/categories/题解/" class="post-category" target="_blank">
+                                    题解
+                                </a>
+                            
+                            <a href="/categories/题解/做题经验get/" class="post-category" target="_blank">
+                                    做题经验get
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1399,41 +1388,32 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/02/02/hua-dong-chuang-kou-zhong-wei-shu/">
+                <a href="/2021/02/16/if-yu-ju-de-qi-guai-xie-fa/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/25.jpg" class="responsive-img" alt="滑动窗口中位数">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="if()语句的奇怪写法">
                         
-                        <span class="card-title">滑动窗口中位数</span>
+                        <span class="card-title">if()语句的奇怪写法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            题目介绍中位数是有序序列最中间的那个数。如果序列的长度是偶数，则没有最中间的数；此时中位数是最中间的两个数的平均数。
-例如：
-[2,3,4]，中位数是 3[2,3]，中位数是 (2 + 3) / 2 = 2.5给你一个数组 nums，有一个
+                            问题描述
+晚上的时候，看到群里有个人问if(9 &lt; a &lt; 10)这样写为什么会出错，我看了一下，发现我写了那么久的代码，好像没有见过这么写，觉得这跑起来应该会报错，就在leetecode上的PlayGround上简单写了一下，
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-02-02
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-02-16
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/题解/" class="post-category" target="_blank">
-                                    题解
-                                </a>
-                            
-                            <a href="/categories/题解/做题经验get/" class="post-category" target="_blank">
-                                    做题经验get
-                                </a>
-                            
-                            <a href="/categories/题解/做题经验get/实战的知识/" class="post-category" target="_blank">
-                                    实战的知识
+                            <a href="/categories/有趣的逻辑问题/" class="post-category" target="_blank">
+                                    有趣的逻辑问题
                                 </a>
                             
                             
