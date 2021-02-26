@@ -6,11 +6,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="棒球比赛, 王久铭">
+    <meta name="keywords" content="数据流中的第K大元素, 王久铭">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY">
-    <meta name="description" content="题目介绍你现在是一场采用特殊赛制棒球比赛的记录员。这场比赛由若干回合组成，过去几回合的得分可能会影响以后几回合的得分。
-比赛开始时，记录是空白的。你会得到一个记录操作的字符串列表 ops，其中 ops[i] 是你需要记录的第 i 项操作，o">
+    <meta name="description" content="题目介绍设计一个找到数据流中第 k 大元素的类（class）。注意是排序后的第 k 大元素，不是第 k 个不同的元素。
+请实现 KthLargest 类：KthLargest(int k, int[] nums) 使用整数 k 和整数流 n">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>棒球比赛 | 王久铭</title>
+    <title>数据流中的第K大元素 | 王久铭</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -617,13 +617,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        棒球比赛
+                        数据流中的第K大元素
                     </div>
                 </div>
             </div>
@@ -763,6 +763,10 @@
                                 做题经验get
                             </a>
                         
+                            <a href="/categories/题解/做题经验get/小根堆/" class="post-category" target="_blank">
+                                小根堆
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -771,7 +775,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-02-24
+                    2021-02-26
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -785,7 +789,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        667
+                        556
                     </div>
                     
 
@@ -804,51 +808,58 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="题目介绍"><a href="#题目介绍" class="headerlink" title="题目介绍"></a>题目介绍</h3><p>你现在是一场采用特殊赛制棒球比赛的记录员。这场比赛由若干回合组成，过去几回合的得分可能会影响以后几回合的得分。</p>
-<p>比赛开始时，记录是空白的。你会得到一个记录操作的字符串列表 ops，其中 ops[i] 是你需要记录的第 i 项操作，ops 遵循下述规则：</p>
-<p>整数 x - 表示本回合新获得分数 x<br>“+” - 表示本回合新获得的得分是前两次得分的总和。题目数据保证记录此操作时前面总是存在两个有效的分数。<br>“D” - 表示本回合新获得的得分是前一次得分的两倍。题目数据保证记录此操作时前面总是存在一个有效的分数。<br>“C” - 表示前一次得分无效，将其从记录中移除。题目数据保证记录此操作时前面总是存在一个有效的分数。<br>请你返回记录中所有得分的总和。</p>
-<p><a href="https://leetcode-cn.com/problems/baseball-game" target="_blank" rel="noopener">leetecode传送们</a></p>
+                <h3 id="题目介绍"><a href="#题目介绍" class="headerlink" title="题目介绍"></a>题目介绍</h3><p>设计一个找到数据流中第 k 大元素的类（class）。注意是排序后的第 k 大元素，不是第 k 个不同的元素。</p>
+<p>请实现 KthLargest 类：<br>KthLargest(int k, int[] nums) 使用整数 k 和整数流 nums 初始化对象。<br>int add(int val) 将 val 插入数据流 nums 后，返回当前数据流中第 k 大的元素。</p>
+<p><a href="https://leetcode-cn.com/problems/kth-largest-element-in-a-stream/" target="_blank" rel="noopener">leetcode传送门</a></p>
 <h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><ul>
-<li>其实看到这个题很简单，相当于按照条件来进行运算，对不同的情况，进行处理就好了</li>
+<li><p>这个题的解题思路有很多，题目要求我们初始化一个类来保存数组，而在每次<code>add()</code>的过程中，返回数组中的第<code>K</code>大元素，我们可以使用 <strong>小根堆</strong>，<strong>multiset</strong>，multiset会自动排序，而且允许数据重复</p>
+</li>
+<li><p>这个题用的是小根堆的方法来做</p>
+</li>
 </ul>
-<h4 id="MyCode"><a href="#MyCode" class="headerlink" title="MyCode"></a>MyCode</h4><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<h4 id="MyCode"><a href="#MyCode" class="headerlink" title="MyCode"></a>MyCode</h4><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">KthLargest</span> <span class="token punctuation">{</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
-    <span class="token keyword">int</span> <span class="token function">calPoints</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>string<span class="token operator">></span><span class="token operator">&amp;</span> ops<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> ans<span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span>string c <span class="token operator">:</span> ops<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">==</span> <span class="token string">"C"</span><span class="token punctuation">)</span>
-                ans<span class="token punctuation">.</span><span class="token function">pop_back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">==</span> <span class="token string">"D"</span><span class="token punctuation">)</span>
-                ans<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>ans<span class="token punctuation">[</span>ans<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">==</span> <span class="token string">"+"</span><span class="token punctuation">)</span>
-                ans<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>ans<span class="token punctuation">[</span>ans<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> ans<span class="token punctuation">[</span>ans<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">else</span>
-                ans<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span><span class="token function">stoi</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//把数字字符串转换为int型</span>
+    <span class="token function">KthLargest</span><span class="token punctuation">(</span><span class="token keyword">int</span> k<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        target <span class="token operator">=</span> k<span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> x <span class="token operator">:</span> nums<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            heap<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>heap<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> target<span class="token punctuation">)</span>
+                heap<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
-        <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> ans<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i <span class="token operator">++</span><span class="token punctuation">)</span>
-            res <span class="token operator">+</span><span class="token operator">=</span> ans<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> res<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h3><ul>
-<li>这个题我主要是来记录一下对数字字符串转换为<code>int</code>的数字，因为这个题是<code>string</code>类型的，所以不能做 <strong>“5” - “0”</strong> 这样的操作，如果是<code>char</code>类型，这样的操作是可以的</li>
-<li>所以在这个题中，我用的是<code>stoi</code>这个函数，其实还有一个<code>atoi</code>也可以用，但是它们两个有区别</li>
+    <span class="token keyword">int</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">int</span> val<span class="token punctuation">)</span> <span class="token punctuation">{</span>       
+        heap<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>heap<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> target<span class="token punctuation">)</span>
+            heap<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> heap<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token keyword">private</span> <span class="token operator">:</span>
+    <span class="token comment" spellcheck="true">//小根堆，依次分别是&lt;类型,&lt;存储方式>,&lt;比较函数>></span>
+    priority_queue<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">,</span> greater<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> heap<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> target<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">/**
+ * Your KthLargest object will be instantiated and called as such:
+ * KthLargest* obj = new KthLargest(k, nums);
+ * int param_1 = obj->add(val);
+ */</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="对小根堆的简单理解"><a href="#对小根堆的简单理解" class="headerlink" title="对小根堆的简单理解"></a>对小根堆的简单理解</h3><ul>
+<li><p>小根堆就是父节点比每个子节点的数都小（当然，也是有大根堆的，大根堆就是父节点的值比每个子节点的值都大）</p>
+</li>
+<li><p>最小堆的定义 <strong>priority_queue&lt;int, vector<int>, greater<int>&gt; heap;</int></int></strong>，每个位置的意思是 <strong>依次分别是&lt;类型,&lt;存储方式&gt;,&lt;比较函数&gt;&gt;</strong></p>
+</li>
+<li><p>但是小根堆好像只支持<code>int</code></p>
+</li>
 </ul>
-<h4 id="stoi和atoi的区别"><a href="#stoi和atoi的区别" class="headerlink" title="stoi和atoi的区别"></a>stoi和atoi的区别</h4><h5 id="相同点："><a href="#相同点：" class="headerlink" title="相同点："></a>相同点：</h5><ul>
-<li><p>①都是C++的字符处理函数，把数字字符串转换成int输出</p>
-</li>
-<li><p>②头文件都是<code>#include&lt;cstring&gt;</code></p>
-</li>
+<h3 id="为什么用小根堆"><a href="#为什么用小根堆" class="headerlink" title="为什么用小根堆"></a>为什么用小根堆</h3><ul>
+<li>因为我们需要在堆中保留数据流中的前 KK 大元素，使用小根堆能保证每次调用堆的 pop() 函数时，从堆中删除的是堆中的最小的元素（堆顶）</li>
 </ul>
-<h5 id="不同点："><a href="#不同点：" class="headerlink" title="不同点："></a>不同点：</h5><ul>
-<li><p>①<code>atoi()</code>的参数是 <code>const char*</code> ,因此对于一个字符串<code>str</code>我们必须调用 <code>c_str(</code>)的方法把这个<code>string</code>转换成 <code>const char*</code>类型的,而<code>stoi()</code>的参数是<code>const string*</code>,不需要转化为 <code>const char*</code>；</p>
-</li>
-<li><p>②<code>stoi()</code>会做范围检查，默认范围是在<code>int</code>的范围内的，如果超出范围的话则会<code>runtime error！</code>而<code>atoi()</code>不会做范围检查，如果超出范围的话，超出上界，则输出上界，超出下界，则输出下界</p>
-</li>
+<h3 id="为什么能保证堆顶元素是第-KK-大元素？"><a href="#为什么能保证堆顶元素是第-KK-大元素？" class="headerlink" title="为什么能保证堆顶元素是第 KK 大元素？"></a>为什么能保证堆顶元素是第 KK 大元素？</h3><ul>
+<li>因为小根堆中保留的一直是堆中的前 KK 大的元素，堆的大小是 KK，所以堆顶元素是第 KK 大元素。</li>
 </ul>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
-<li>这样看还是用<code>stoi</code>好一点</li>
+<h3 id="每次-add-的时间复杂度是多少？"><a href="#每次-add-的时间复杂度是多少？" class="headerlink" title="每次 add() 的时间复杂度是多少？"></a>每次 add() 的时间复杂度是多少？</h3><ul>
+<li>每次 add() 时，调用了堆的 push() 和 pop() 方法，两个操作的时间复杂度都是 log(K)log(K).</li>
 </ul>
 
             </div>
@@ -1000,7 +1011,7 @@
                     </span>
                     <a href="https://programtraveler.github.io" class="b-link-green">王久铭</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2021/02/24/bang-qiu-bi-sai/" class="b-link-green">棒球比赛</a>
+                    <a href="/2021/02/26/shu-ju-liu-zhong-de-di-k-da-yuan-su/" class="b-link-green">数据流中的第K大元素</a>
                 </p>
             </div>
 
@@ -1320,9 +1331,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/02/26/shu-ju-liu-zhong-de-di-k-da-yuan-su/">
                     <div class="card-image">
@@ -1341,9 +1353,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-02-26
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-02-26
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -1364,6 +1376,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1390,32 +1403,36 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/02/16/if-yu-ju-de-qi-guai-xie-fa/">
+                <a href="/2021/02/24/bang-qiu-bi-sai/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="if()语句的奇怪写法">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="棒球比赛">
                         
-                        <span class="card-title">if()语句的奇怪写法</span>
+                        <span class="card-title">棒球比赛</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            问题描述
-晚上的时候，看到群里有个人问if(9 &lt; a &lt; 10)这样写为什么会出错，我看了一下，发现我写了那么久的代码，好像没有见过这么写，觉得这跑起来应该会报错，就在leetecode上的PlayGround上简单写了一下，
+                            题目介绍你现在是一场采用特殊赛制棒球比赛的记录员。这场比赛由若干回合组成，过去几回合的得分可能会影响以后几回合的得分。
+比赛开始时，记录是空白的。你会得到一个记录操作的字符串列表 ops，其中 ops[i] 是你需要记录的第 i 项操作，o
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-02-16
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-02-24
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/有趣的逻辑问题/" class="post-category" target="_blank">
-                                    有趣的逻辑问题
+                            <a href="/categories/题解/" class="post-category" target="_blank">
+                                    题解
+                                </a>
+                            
+                            <a href="/categories/题解/做题经验get/" class="post-category" target="_blank">
+                                    做题经验get
                                 </a>
                             
                             
